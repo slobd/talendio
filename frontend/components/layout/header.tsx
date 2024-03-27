@@ -1,4 +1,6 @@
 "use client"
+
+import { usePathname } from 'next/navigation'
 import Link from "next/link";
 import Image from "next/image";
 import React, { useState } from "react";
@@ -34,6 +36,7 @@ const navItems = [
 ];
 
 const Header = () => {
+    const pathname = usePathname();
     const [nav, setNav] = useState(false);
     return (
         <div className="z-50 flex justify-between items-center w-full h-20 px-16 text-black bg-[#AEA6FC] fixed nav">
@@ -53,17 +56,22 @@ const Header = () => {
                 {navItems.map(({ id, label, link }) => (
                     <li
                         key={id}
-                        className="flex text-center items-center nav-links px-4 cursor-pointer capitalize font-medium text-black hover:scale-105 hover:text-gray-500 duration-200 link-underline"
+                        className="text-center flex items-center nav-links px-4 cursor-pointer capitalize text-[15px] font-normal text-black hover:text-gray-500 duration-200 link-underline"
                     >
-                        <Link href={link}>{label}</Link>
+                        <Link
+                            className={`link ${pathname === link ? 'font-bold' : ''}`}
+                            href={link}
+                        >
+                            {label}
+                        </Link>
                     </li>
                 ))}
             </ul>
             <div className="hidden lg:flex gap-3">
-                <Button variant="ghost" className="bg-white hover:scale-105">
+                <Button variant="ghost" className="text-[15px] font-normal bg-white hover:text-gray-500">
                     <Link href="/profile"> Mein Account </Link>
                 </Button>
-                <Button variant="ghost" className="bg-yellow-400 hover:bg-yellow-400 hover:scale-105">
+                <Button variant="ghost" className="text-[15px] font-normal bg-yellow-400 hover:bg-yellow-400 hover:text-gray-500">
                     <Link href="/jobs/create"> Jobanzeige schalten </Link>
                 </Button>
             </div>
@@ -82,7 +90,7 @@ const Header = () => {
                         {navItems.map(({ id, label, link }) => (
                             <li
                                 key={id}
-                                className="text-center px-4 cursor-pointer capitalize py-6 text-2xl hover:scale-105 hover:text-gray-500"
+                                className="text-center px-4 cursor-pointer capitalize py-6 text-[15px] font-normal hover:text-gray-500"
                             >
                                 <Link onClick={() => setNav(!nav)} href={link}>
                                     {label}
@@ -91,10 +99,10 @@ const Header = () => {
                         ))}
                     </ul>
                     <div className="flex justify-center items-center gap-3">
-                        <Button variant="ghost" className="bg-white hover:scale-105 min-w-[170px]">
+                        <Button variant="ghost" className="bg-white min-w-[170px] text-[15px] font-normal hover:text-gray-500">
                             <Link href="/profile"> Mein Account </Link>
                         </Button>
-                        <Button variant="ghost" className="bg-[#FFDE00] hover:bg-[#FFDE00] hover:scale-105">
+                        <Button variant="ghost" className="bg-[#FFDE00] text-[15px] font-normal hover:bg-[#FFDE00] hover:text-gray-500">
                             <Link href="/jobs/create"> Jobanzeige schalten </Link>
                         </Button>
                     </div>

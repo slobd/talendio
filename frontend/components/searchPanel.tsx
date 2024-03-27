@@ -13,7 +13,10 @@ const SearchPanel: NextPage<SearchPanelProps> = ({ wrapperClassName, onSubmit })
 
     return (
         <div className={`${wrapperClassName} flex md:flex-row flex-col justify-center items-center w-full min-h-[180px] px-16 bg-black`}>
-            <div className="md:text-4xl text-3xl md:w-2/5 w-full text-white py-2">Finde die besten Jobs in Stadtname</div>
+            <div className="md:text-4xl text-3xl md:w-2/5 w-full text-white py-2 font-light">
+                Finde die besten Jobs in
+                <span className="font-medium"> Stadtname</span>
+            </div>
             <div className="flex md:w-3/5 w-full items-center space-x-2">
                 <Input
                     type="search"
