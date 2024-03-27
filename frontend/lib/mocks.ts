@@ -171,7 +171,7 @@ export const jobs = [
     },
 ];
 
-export const reviews = [
+export const employers = [
     {
         logo: "/images/companies/company_logo_1.png",
         name: "rexxy systems",
