@@ -1,12 +1,11 @@
 import { NextPage } from "next";
-import React, { useState } from "react";
 import { Button } from "./ui/button";
 
 
 const NewsletterPanel: NextPage = () => {
 
     return (
-        <div className="px-16 pb-8 pt-4 md:pb-14 pt-0">
+        <div className="px-16 pb-8 pt-12 md:pb-12">
             <div className="relative w-full bg-[#8259FF] rounded-sm px-10 py-8 overflow-hidden">
                 <div style={{ background: 'black', borderRadius: '50%', border: '10px solid black', width: '70px', height: '70px', opacity: 0.2 }} className="absolute bottom-[-30px] left-[-15px]"></div>
                 <div style={{ background: 'none', borderRadius: '50%', border: '10px solid black', width: '120px', height: '120px', opacity: 0.2 }} className="absolute top-[-90px] left-[10%]"></div>

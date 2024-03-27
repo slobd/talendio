@@ -1,6 +1,7 @@
 "use client"
 import Image from "next/image";
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import {
   Tabs,
@@ -30,9 +31,13 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { LuArrowLeftRight } from "react-icons/lu";
 import { TfiMenuAlt } from "react-icons/tfi";
-import { jobs, reviews, articles } from "@/lib/mocks";
+import { jobs, reviews, articles, topics } from "@/lib/mocks";
 import NewsletterPanel from "@/components/newsletter";
 import { colors } from "@/lib/constants";
+
+const ReactStars = dynamic(() => import("react-stars"), {
+  ssr: false,
+});
 
 const matchJobTabs: OptionType[] = [
   { label: "TOP JOBS", value: "top" },
@@ -55,6 +60,12 @@ const OMRReviewTabs: OptionType[] = [
   { label: "CONTENT MARKETING", value: "content_marketing" },
 ];
 
+const topicTabs: OptionType[] = [
+  { label: "DAILY", value: "daily" },
+  { label: "REVIEWS", value: "reviews" },
+  { label: "PODSTARS", value: "podstarts" },
+];
+
 export default function Home() {
   const router = useRouter();
   const [searchKey, setSearchKey] = useState("");
@@ -62,6 +73,8 @@ export default function Home() {
   const [matchingJobs, setMatchingJobs] = useState([]);
   const [activeJobTab, setActiveJobTab] = useState("top");
   const [activeReviewTab, setActiveReviewTab] = useState("tools_to_watch");
+  const [activeTopicTab, setActiveTopicTab] = useState("daily");
+
 
   const searchJobs = (_searchKey: string) => {
     console.log("searchKey", _searchKey);
@@ -75,7 +88,7 @@ export default function Home() {
       {/* Matching Jobs */}
       <div className="w-full px-16">
         <div className="flex md:flex-row flex-col justify-between items-center py-3">
-          <div className="text-lg">520 passende Jobs</div>
+          <div className="text-4xl font-bold">520 passende Jobs</div>
           <div className="flex gap-3 md:pt-5 pt-2">
             <Button variant="outline" className="border-2 border-black">
               ALLE JOBS
@@ -121,6 +134,7 @@ export default function Home() {
                             alt="Logo"
                             width={80}
                             height={60}
+                            priority
                           />
                         </span>
                         <CardHeader className="p-0 py-6">
@@ -154,7 +168,7 @@ export default function Home() {
       {/* OMR Reviews */}
       <div className="w-full px-16">
         <div className="flex md:flex-row flex-col justify-between items-center py-3">
-          <div className="text-lg">OMR Reviews</div>
+          <div className="text-4xl font-bold">OMR Reviews</div>
           <div className="flex gap-3 md:pt-5 pt-2">
             <Button variant="outline" className="border-2 border-black">
               ALLE REVIEWS
@@ -176,7 +190,6 @@ export default function Home() {
                 {tab.label}
               </TabsTrigger>
             )}
-
           </TabsList>
           <TabsContent value={activeReviewTab}>
             <Carousel
@@ -186,24 +199,31 @@ export default function Home() {
               <CarouselContent>
                 {reviews.map((review, index) => (
                   <CarouselItem key={index} className="xl:basis-1/4 lg:basis-1/3 sm:basis-1/2">
-                    < Card key={index} className="relative flex flex-col justify-between items-center text-center px-5 py-1 my-2 gap-3 cursor-pointer shadow-sm transition duration-300 hover:shadow-lg hover:border hover:border-gray-400">
+                    < div key={index} className="relative flex flex-col justify-between items-center text-center px-5 py-1 my-2 gap-3 cursor-pointer shadow-sm transition duration-300 border rounded-md hover:shadow-lg hover:border hover:border-gray-400">
                       <span className={`absolute top-0 w-full h-20 bg-${colors[index % colors.length]}-300 opacity-50 overflow-hidden `}></span>
                       <span className="z-10 bg-white p-2.5 border border-gray-300 mt-10">
                         <Image
                           className="w-12 h-12"
                           src={review?.logo}
-                          alt="Logo"
+                          alt="logo"
                           width={40}
                           height={40}
+                          priority
                         />
                       </span>
-                      <CardHeader className="px-0">
+                      <div className="px-0">
                         <CardTitle className="text-lg">{review?.name}</CardTitle>
-                        <CardDescription className="flex flex-col text-black">
-                          <span>{review?.rate}</span>
+                        <div className="flex flex-col text-black items-center">
+                          <ReactStars
+                            value={review?.rate}
+                            edit={false}
+                            count={5}
+                            size={24}
+                            color2={'#ffd700'}
+                          />
                           <span>{review?.count} Reviews</span>
-                        </CardDescription>
-                      </CardHeader>
+                        </div>
+                      </div>
                       <CardFooter className="flex items-center p-1">
                         <Button
                           variant="ghost"
@@ -214,7 +234,7 @@ export default function Home() {
                           <MdKeyboardArrowRight className="h-5 w-5 bg-extrabold" />
                         </Button>
                       </CardFooter>
-                    </Card>
+                    </div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
@@ -227,7 +247,7 @@ export default function Home() {
       {/* OMR Articles */}
       <div className="w-full px-16">
         <div className="flex md:flex-row flex-col justify-between items-center py-3">
-          <div className="text-lg">OMR Daily</div>
+          <div className="text-4xl font-bold">OMR Daily</div>
           <div className="flex gap-3 md:pt-5 pt-2">
             <Button variant="outline" className="border-2 border-black">
               ALLE DAILY ARTIKEL
@@ -251,9 +271,10 @@ export default function Home() {
                         <Image
                           className="w-auto hover:scale-105 transition duration-300"
                           src={article?.image}
-                          alt="Logo"
+                          alt="article"
                           width={600}
                           height={400}
+                          priority
                         />
                       </span>
                       <CardHeader className="p-0">
@@ -272,6 +293,7 @@ export default function Home() {
                           alt="Logo"
                           width={600}
                           height={400}
+                          priority
                         />
                       </span>
                       <CardHeader className="p-0">
@@ -285,12 +307,63 @@ export default function Home() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              {/* <CarouselPrevious className="-left-5 w-10 h-10 border border-gray-300" /> */}
-              {/* <CarouselNext className="-right-5 w-10 h-10 border border-gray-300" /> */}
             </Carousel>
           </TabsContent>
         </Tabs>
       </div>
+      {/* Hot Topics */}
+      <div className="w-full px-16">
+        <div className="flex md:flex-row flex-col justify-between items-center py-3">
+          <div className="text-4xl font-bold">Heiße Themen</div>
+          <div className="flex gap-3 md:pt-5 pt-2">
+            <Button variant="outline" className="border-2 border-black">
+              ALLE ARTIKEL
+              <MdKeyboardArrowRight className="w-7 h-7 pl-1" />
+            </Button>
+          </div>
+        </div>
+        <Tabs
+          value={activeTopicTab}
+        >
+          <TabsList className="flex justify-start flex-wrap h-auto">
+            {topicTabs?.map((tab: OptionType, index) =>
+              <TabsTrigger
+                key={index}
+                className={`${activeTopicTab == tab.value ? "border-yellow-400" : "border-[#F1F5F9]"} border-b-4 transition duration-500 hover:border-yellow-400 hover:bg-white`}
+                value={tab.value}
+                onClick={() => setActiveTopicTab(tab.value)}
+              >
+                {tab.label}
+              </TabsTrigger>
+            )}
+          </TabsList>
+          <TabsContent value={activeTopicTab}>
+            <div className="flex flex-wrap justify-start items-center">
+            {topics?.map((article, index) => (
+              <div key={index} className="flex xl:w-1/3 lg:w-1/2">
+                <Card className="border-none flex flex-row justify-start items-center my-2 gap-3 cursor-pointer transition duration-300">
+                  <span className="w-[100px] h-[55px] min-h-[55px] min-w-[100px] overflow-hidden rounded-md">
+                    <Image
+                      className="w-[100px] h-[55px] hover:scale-110 transition duration-300"
+                      src={article?.image}
+                      alt="topic Image"
+                      width={100}
+                      height={55}
+                      priority
+                    />
+                  </span>
+                  <CardHeader className="p-0">
+                    <CardTitle className="text-md">{article?.name}: {article?.title}</CardTitle>
+                  </CardHeader>
+                </Card>
+              </div>
+            ))}
+            </div>
+          </TabsContent>
+        </Tabs>
+      </div>
+      {/* Newsletter  */}
+      <NewsletterPanel />
     </main >
   );
 }
