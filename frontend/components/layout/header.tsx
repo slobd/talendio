@@ -33,11 +33,11 @@ const navItems = [
     },
 ];
 
-const Navbar = () => {
+const Header = () => {
     const [nav, setNav] = useState(false);
     return (
-        <div className="z-50 flex justify-between items-center w-full h-20 px-16 text-gray-500 bg-[#AEA6FC] fixed nav">
-            <div className="relative !w-[180px] !max-h-[50px]">
+        <div className="z-50 flex justify-between items-center w-full h-20 px-16 text-black bg-[#AEA6FC] fixed nav">
+            <div className="relative !w-[180px] min-w-[150px] !min-h-[30px]">
                 <Link href="/">
                     <Image
                         className="w-auto dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
@@ -104,4 +104,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default Header;
