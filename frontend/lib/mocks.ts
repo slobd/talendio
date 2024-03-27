@@ -331,3 +331,92 @@ export const topics = [
         description: "",
     },
 ];
+
+export const reports = [
+    {
+        image: "/images/reports/reports_1.png",
+        title: "Performance Marketing - Professional Guide",
+        benefits: [
+            "Über 100 Seiten Performance-Marketing-Wissen von 16 Expert*innen",
+            "Hands-on Lösungen für dein Performance Marketing",
+            "Zahlreiche Checklisten, Downloads und Praxis-Tipps",
+            "Tool-Tipps für dein Performance Marketing (powered by OMR Reviews)",
+
+        ],
+    },
+    {
+        image: "/images/reports/reports_2.png",
+        title: "Digital Analytics - Fundamental Guide",
+        benefits: [
+            "Über 100 Seiten Analytics-Wissen von Expert*innen",
+            "Hands-on Lösungen für deine Datenanalyse",
+            "Zahlreiche Screencasts, Downloads und Praxis-Tipps",
+            "Tool-Tipps für die Optimierung deiner Web Analytics",
+        ],
+    },
+    {
+        image: "/images/reports/reports_3.png",
+        title: "Google Ads - Fundamental SEA Guide",
+        benefits: [
+            "Knapp 130 Seiten Google-Wissen von Expert*innen",
+            "Aufbau einer granularen Kampagnen-Struktur",
+            "Tricks für effektive Anzeigen und gute Keywords",
+            "Tipps und Tools, die dir die Arbeit mit Google Ads erleichtern",
+        ],
+    },
+    {
+        image: "/images/reports/reports_4.png",
+        title: "Amazon Marketing – Fundamental Guide",
+        benefits: [
+            "Über 90 Seiten Wissen unserer Expert*innen",
+            "Insights zum Seller Central, zu Tools und Brand-Building-Maßnahmen",
+            "Überblick über die wichtigsten Ranking-Faktoren für Produktlistings",
+            "Downloads, Checklisten und Screencast für deinen Auftritt auf Amazon",
+        ],
+    },
+    {
+        image: "/images/reports/reports_5.png",
+        title: "Podcast Marketing – Professional Guide",
+        benefits: [
+            "Über 120 Seiten Expert*innenwissen",
+            "Praktische Tipps für Konzept und Produktion deines Branded Podcasts",
+            "Insights zu Monitoring, Vermarktung und Audience Acquisition",
+            "Downloads, Screencasts und Best Practices",
+        ],
+    },
+];
+
+export const partners = [
+    {
+        image: "/images/partners/partner_1.png",
+        title: "Vodafone GmbH",
+    },
+    {
+        image: "/images/partners/partner_2.png",
+        title: "Altonaer Kaviar Import Haus",
+    },
+    {
+        image: "/images/partners/partner_3.png",
+        title: "Fairmont Hotel Vier Jahreszeiten",
+    },
+    {
+        image: "/images/partners/partner_4.png",
+        title: "BAT Germany",
+    },
+    {
+        image: "/images/partners/partner_5.png",
+        title: "Dreissigacker",
+    },
+    {
+        image: "/images/partners/partner_2.png",
+        title: "Altonaer Kaviar Import Haus",
+    },
+    {
+        image: "/images/partners/partner_3.png",
+        title: "Frosta Tiefkühlkost GmbH",
+    },
+    {
+        image: "/images/partners/partner_4.png",
+        title: "BAT Germany",
+    },
+];
