@@ -234,7 +234,7 @@ export const reviews = [
         rate: 4.3,
         count: 780,
     },
-]
+];
 
 export const articles = [
     {
@@ -273,4 +273,61 @@ export const articles = [
         name: "TORBEN LUX",
         date: "18.3.2024",
     },
-]
+];
+
+export const topics = [
+    {
+        image: "/images/articles/articles_1.png",
+        name: "Michael Michalsky",
+        title: "Karl Lagerfeld war immer mein Hero",
+        description: "",
+    },
+    {
+        image: "/images/articles/articles_2.png",
+        name: "Castore vs. Nike & Co.",
+        title: "Wie zwei Brüder den Ausrüstermarkt aufmischen wollen",
+        description: "",
+    },
+    {
+        image: "/images/articles/articles_3.png",
+        name: "Unglücklich trotz 300 Millionen-Exit",
+        title: "Wie dieser Gründer mit Breathwork Drogen und Pornos hinter sich ließ",
+        description: "",
+    },
+    {
+        image: "/images/articles/articles_4.png",
+        name: "Von Social-Media- bis Fußball-Legenden",
+        title: "Mehr Speaker*innen bei OMR24",
+        description: "",
+    },
+    {
+        image: "/images/articles/articles_5.png",
+        name: "Potenzieller Amazon-Killer",
+        title: "Temu plant Öffnung für europäische Marken",
+        description: "",
+    },
+    {
+        image: "/images/articles/articles_6.png",
+        name: "Weniger Exclusives, mehr Unterstützung für Creator*innen",
+        title: "So funktioniert Spotifys neue Podcast-Strategie",
+        description: "",
+    },
+    {
+        image: "/images/articles/articles_4.png",
+        name: "Von Social-Media- bis Fußball-Legenden",
+        title: "Mehr Speaker*innen bei OMR24",
+        description: "",
+    },
+    {
+        image: "/images/articles/articles_5.png",
+        name: "Potenzieller Amazon-Killer",
+        title: "Temu plant Öffnung für europäische Marken",
+        description: "",
+    },
+    {
+        image: "/images/articles/articles_6.png",
+        name: "Weniger Exclusives, mehr Unterstützung für Creator*innen",
+        title: "So funktioniert Spotifys neue Podcast-Strategie",
+        description: "",
+    },
+];
