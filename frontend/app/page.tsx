@@ -90,8 +90,10 @@ export default function Home() {
       {/* Matching Jobs */}
       <div className="w-full md:px-16 px-4">
         <div className="flex md:flex-row flex-col justify-between items-center pb-3 pt-9">
-          <div className="md:text-4xl text-3xl font-bold">Neue Jobangebote</div>
-          <div className="flex gap-3 md:pt-5 pt-2">
+          <div className="w-full">
+            <div className="md:text-4xl text-3xl font-bold">Neue Jobangebote</div>
+          </div>
+          <div className="w-full flex justify-end gap-3 md:pt-5 pt-2">
             <Button variant="outline" className="border-2 border-black rounded-sm font-bold">
               Alle Jobs anzeigen
               <MdKeyboardArrowRight className="w-7 h-7 pl-1" />
@@ -121,8 +123,8 @@ export default function Home() {
           </TabsList>
           <TabsContent value={activeJobTab}>
             <div className="flex flex-wrap justify-start items-start">
-              {jobs?.slice(0, 12)?.map((job, index) =>
-                <div key={index} className="xl:w-1/2 w-full p-3">
+              {jobs?.slice(0, 8)?.map((job, index) =>
+                <div key={index} className="xl:w-1/2 w-full p-2 py-0">
                   < Card className="group flex justify-between items-center md:px-5 px-1 py-1 my-2 cursor-pointer shadow-sm transition duration-300 hover:shadow-lg hover:border hover:border-blue-300">
                     <div className="flex flex-row items-center md:gap-5 gap-2">
                       <div className="relative w-auto min-w-[50px]">
@@ -163,11 +165,11 @@ export default function Home() {
       {/* Empolyers */}
       <div className="w-full md:px-16 px-4">
         <div className="flex md:flex-row flex-col justify-between items-center pb-3 pt-9">
-          <div>
-            <div className="md:text-4xl text-3xl font-bold md:text-start text-center">Arbeitgeber in Stadtname</div>
+          <div className="w-full">
+            <div className="md:text-4xl text-3xl font-bold">Arbeitgeber in Stadtname</div>
             <div className="text-md text-gray-500 py-2 pt-4">Entdecke interessante Unternehmen in Deiner Stadt</div>
           </div>
-          <div className="flex gap-3 md:pt-5 pt-2">
+          <div className="w-full flex justify-end gap-3 md:pt-5 pt-2">
             <Button variant="outline" className="border-2 border-black rounded-sm font-bold">
               Alle Arbeitgeber
               <MdKeyboardArrowRight className="w-7 h-7 pl-1" />
@@ -238,10 +240,10 @@ export default function Home() {
       {/* Magazine */}
       <div className="w-full md:px-16 px-4">
         <div className="flex md:flex-row flex-col justify-between items-center pb-3 pt-9">
-          <div>
+          <div className="w-full">
             <div className="md:text-4xl text-3xl font-bold">Magazin</div>
           </div>
-          <div className="flex gap-3 md:pt-5 pt-2">
+          <div className="w-full flex justify-end gap-3 md:pt-5 pt-2">
             <Button variant="outline" className="border-2 border-black rounded-sm font-bold">
               Alle Artikel ansehen
               <MdKeyboardArrowRight className="w-7 h-7 pl-1" />
@@ -295,8 +297,10 @@ export default function Home() {
       {/* Hot Topics */}
       <div className="w-full md:px-16 px-4">
         <div className="flex md:flex-row flex-col justify-between items-center pb-3 pt-9">
-          <div className="md:text-4xl text-3xl font-bold">Veranstaltungen</div>
-          <div className="flex gap-3 md:pt-5 pt-2">
+          <div className="w-full">
+            <div className="md:text-4xl text-3xl font-bold">Veranstaltungen</div>
+          </div>
+          <div className="w-full flex justify-end gap-3 md:pt-5 pt-2">
             <Button variant="outline" className="border-2 border-black rounded-sm font-bold">
               Alle Artikel
               <MdKeyboardArrowRight className="w-7 h-7 pl-1" />
@@ -348,7 +352,7 @@ export default function Home() {
       {/* Studies & Tools */}
       <div className="w-full md:px-16 px-4">
         <div className="flex md:flex-row flex-col justify-between items-center pb-3 pt-9">
-          <div>
+          <div className="w-full">
             <div className="md:text-4xl text-3xl font-bold">Studies & Tools</div>
             <div className="text-md text-gray-500 py-2 pt-4">Die Weiterbildung für Onliner</div>
           </div>
@@ -409,7 +413,7 @@ export default function Home() {
       {/* Partner */}
       <div className="w-full md:px-16 px-4">
         <div className="flex md:flex-row flex-col justify-between items-center pb-3 pt-9">
-          <div>
+          <div className="w-full">
             <div className="md:text-4xl text-3xl font-bold md:text-start text-center">Partner</div>
             <div className="text-md text-gray-500 py-2 pt-4">Die bunte Welt unserer OMR Familie und OMR Partner Cases!</div>
           </div>

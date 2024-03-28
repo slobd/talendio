@@ -28,21 +28,20 @@ const SearchPanel: NextPage<SearchPanelProps> = ({ wrapperClassName, onSubmit })
                 <div className="relative w-full">
                     <Input
                         type="search"
-                        className="pl-7 !ring-0 !ring-offset-0"
-                        placeholder="Job oder Arbeitger suchen ..."
+                        className="pl-9 !ring-0 !ring-offset-0 h-[50px] text-[1.175rem] font-light"
+                        placeholder="Job oder Arbeitgeber suchen ..."
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                     />
-                    <BiSearchAlt2 className="w-4 h-4 absolute left-2 top-3" />
+                    <BiSearchAlt2 className="w-6 h-6 absolute left-2 top-3 text-gray-500" />
                 </div>
-
-                <Button
+                {/* <Button
                     variant="ghost"
                     className="bg-white text-black hover:text-gray-500"
                     onClick={() => onSubmit(input)}
                 >
                     Suchen
-                </Button>
+                </Button> */}
             </div>
         </div>
     );
