@@ -18,7 +18,7 @@ export type FilterUnitProps = {
 const FilterUnit: NextPage<FilterUnitProps> = ({ wrapperClassName, title, items, onChange }) => {
 
     return (
-        <div className={`bg-white rounded-sm px-5 mx-1 py-3 ${wrapperClassName}`}>
+        <div className={`bg-white rounded-sm px-5 mx-1 py-0 ${wrapperClassName}`}>
             <div className="flex flex-row justify-between items-center">
                 <div className="text-base font-bold">{title ?? "Kategorien"}</div>
                 <div className="text-[10px] text-[#00ADAD] hover:text-[#008A8A] cursor-pointer">ZURÜCKSETZEN</div>
@@ -30,13 +30,13 @@ const FilterUnit: NextPage<FilterUnitProps> = ({ wrapperClassName, title, items,
                             <Checkbox id={`id-${item}`} />
                             <label
                                 htmlFor={`id-${item}`}
-                                className="cursor-pointer text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                className="cursor-pointer text-[14px] font-light leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                             >
                                 {item}
                             </label>
                         </div>
                         <div className="text-sm text-gray-600">
-                            {(Math.random() * 100).toFixed(0)}
+                            { item.length }
                         </div>
                     </div>
                 )}
@@ -48,10 +48,10 @@ const FilterUnit: NextPage<FilterUnitProps> = ({ wrapperClassName, title, items,
                                 {items?.slice(5).map((item, index) =>
                                     <div key={index} className="flex flex-row justify-between items-start m-1">
                                         <div className="flex flex-row justify-start items-center gap-3">
-                                            <Checkbox id={`id-${index}`} />
+                                            <Checkbox id={`id-${item}`} />
                                             <label
-                                                htmlFor="terms"
-                                                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                                htmlFor={`id-${item}`}
+                                                className="cursor-pointer text-[14px] font-light leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                                             >
                                                 {item}
                                             </label>
@@ -65,6 +65,7 @@ const FilterUnit: NextPage<FilterUnitProps> = ({ wrapperClassName, title, items,
                             <AccordionTrigger className="py-0 text-[10px] !no-underline hover:opacity-70 cursor-pointer">
                                 MEHR ANZEIGEN
                             </AccordionTrigger>
+                            {/* WENIGER ANZEIGEN */}
                         </AccordionItem>
                     </Accordion>
                 }
