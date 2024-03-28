@@ -1,7 +1,6 @@
 "use client"
 import Image from "next/image";
 import { useRouter } from 'next/navigation';
-import dynamic from "next/dynamic";
 import { useState } from "react";
 import {
   Tabs,
@@ -275,7 +274,7 @@ export default function Home() {
           <TabsContent value={activeMagazineTab}>
             <div className="flex flex-wrap justify-start items-start">
               {magazines?.map((item, index) => (
-                <div key={index} className="flex gap3 xl:w-1/3 md:w-1/2 p-3">
+                <div key={index} className="flex gap-3 xl:w-1/3 md:w-1/2 p-3">
                   <Card className="border-none shadow-none w-full flex flex-col justify-start items-start my-2 gap-3 cursor-pointer transition duration-300">
                     <span className="w-full h-full overflow-hidden rounded-md">
                       <Image
@@ -402,7 +401,7 @@ export default function Home() {
                         </div>
                         <Button
                           variant="ghost"
-                          className="font-bold my-2 rounded-sm bg-yellow-400 hover:bg-yellow-500 hover:scale-105 hover:text-white"
+                          className="font-bold my-2 rounded-sm bg-yellow-500 hover:bg-yellow-600 hover:scale-105 hover:text-white"
                           onClick={() => { }}
                         >
                           ZUM REPORT
