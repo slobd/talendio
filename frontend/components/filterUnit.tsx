@@ -10,16 +10,17 @@ import { Separator } from "@/components/ui/separator"
 
 export type FilterUnitProps = {
     wrapperClassName?: string;
+    title?: string;
     items: string[];
     onChange?: (searchKey: string) => void;
 };
 
-const FilterUnit: NextPage<FilterUnitProps> = ({ wrapperClassName, items, onChange }) => {
+const FilterUnit: NextPage<FilterUnitProps> = ({ wrapperClassName, title, items, onChange }) => {
 
     return (
         <div className={`bg-white rounded-sm px-5 mx-1 py-3 ${wrapperClassName}`}>
             <div className="flex flex-row justify-between items-center">
-                <div className="text-base font-bold">Kategorien</div>
+                <div className="text-base font-bold">{title ?? "Kategorien"}</div>
                 <div className="text-[10px] text-[#00ADAD] hover:text-[#008A8A] cursor-pointer">ZURÜCKSETZEN</div>
             </div>
             <div className="py-2">

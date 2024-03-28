@@ -48,10 +48,10 @@ const Jobs = () => {
                         <MdOutlineKeyboardDoubleArrowRight className={`w-6 h-6 hover:text-white ${!showFilterPanel ? `rotate-0` : `rotate-180`} transition duration-300`} />
                     </Button>
                     <div className='border'>
-                        <FilterUnit items={jobCategories} onChange={handleFilter} />
-                        <FilterUnit items={locations} onChange={handleFilter} />
-                        <FilterUnit items={experiences} onChange={handleFilter} />
-                        <FilterUnit items={remotes} onChange={handleFilter} />
+                        <FilterUnit title={"Kategorien"} items={jobCategories} onChange={handleFilter} />
+                        <FilterUnit title={"Orte"} items={locations} onChange={handleFilter} />
+                        <FilterUnit title={"Erfahrung"} items={experiences} onChange={handleFilter} />
+                        <FilterUnit title={"Remote"} items={remotes} onChange={handleFilter} />
                     </div>
 
                 </div>
