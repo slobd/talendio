@@ -19,7 +19,7 @@ import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import SearchPanel from "@/components/searchPanel";
 import { jobs } from "@/lib/mocks";
 import FilterUnit from '@/components/filterUnit';
-import QuickRegisterPanel from '@/components/QuickRegisterPanel';
+import QuickRegisterPanel from '@/components/quickRegisterPanel';
 import { jobCategories, locations, experiences, remotes } from '@/lib/mocks';
 import { useClientMediaQuery } from '@/components/hooks/useClientMediaQuery';
 
@@ -82,7 +82,7 @@ const Jobs = () => {
                     </div>
                     <div className='flex flex-col'>
                         {jobs?.slice(0, 8)?.map((job, i) =>
-                            < Card key={i} className="group flex justify-between items-center md:px-5 px-1 py-1 my-2 cursor-pointer shadow-sm transition duration-300 hover:shadow-lg hover:border hover:border-blue-300">
+                            < Card key={i} className="group flex justify-between items-center md:px-5 px-1 py-0 my-2 cursor-pointer shadow-sm transition duration-300 hover:shadow-lg hover:border hover:border-blue-300">
                                 <div className="flex flex-row items-center md:gap-5 gap-2">
                                     <span className="w-auto min-w-[50px]">
                                         <Image
