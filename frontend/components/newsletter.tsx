@@ -11,7 +11,7 @@ const NewsletterPanel: NextPage = () => {
                     <div className="md:w-3/5 sm:w-4/5 w-full">
                         <h2 className="text-xl text-white font-bold">Du möchtest über Online-Marketing Themen top informiert sein und die aktuellsten News erhalten? Dann abonniere jetzt unsere Newsletter!</h2>
                     </div>
-                    <Button variant="ghost" className="bg-yellow-400 hover:bg-yellow-500 hover:scale-105">
+                    <Button variant="ghost" className="bg-yellow-500 hover:bg-yellow-600 hover:scale-105">
                         JETZT EINTRAGEN
                     </Button>
                 </div>

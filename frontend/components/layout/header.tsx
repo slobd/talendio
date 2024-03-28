@@ -40,7 +40,7 @@ const Header = () => {
     const [nav, setNav] = useState(false);
     return (
         <div className="z-50 flex justify-between items-center w-full h-20 px-16 text-black bg-[#E5F0FB] fixed nav">
-            <div className="relative !w-[180px] min-w-[150px] !min-h-[30px]">
+            <div className="relative !w-[180px] min-w-[180px] !min-h-[30px]">
                 <Link href="/">
                     <Image
                         className="w-auto dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
@@ -71,7 +71,7 @@ const Header = () => {
                 <Button variant="ghost" className="text-[15px] font-normal bg-white hover:text-gray-500">
                     <Link href="/profile"> Mein Account </Link>
                 </Button>
-                <Button variant="ghost" className="text-[15px] font-medium bg-yellow-400 hover:bg-yellow-400 hover:text-gray-500">
+                <Button variant="ghost" className="text-[15px] font-medium bg-yellow-500 hover:bg-yellow-600 hover:text-gray-500">
                     <Link href="/jobs/create"> Jobanzeige schalten </Link>
                 </Button>
             </div>
@@ -102,7 +102,7 @@ const Header = () => {
                         <Button variant="ghost" className="bg-white min-w-[170px] text-[15px] font-normal hover:text-gray-500">
                             <Link href="/profile"> Mein Account </Link>
                         </Button>
-                        <Button variant="ghost" className="bg-[#FFDE00] text-[15px] font-medium hover:bg-[#FFDE00] hover:text-gray-500">
+                        <Button variant="ghost" className="text-[15px] font-medium bg-yellow-500 hover:bg-yellow-600 hover:text-gray-500">
                             <Link href="/jobs/create"> Jobanzeige schalten </Link>
                         </Button>
                     </div>

@@ -38,7 +38,7 @@ const SearchPanel: NextPage<SearchPanelProps> = ({ wrapperClassName, onSubmit })
 
                 <Button
                     variant="ghost"
-                    className="bg-white text-black hover:scale-105 hover:text-gray-500"
+                    className="bg-white text-black hover:text-gray-500"
                     onClick={() => onSubmit(input)}
                 >
                     Suchen
