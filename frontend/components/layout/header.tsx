@@ -15,23 +15,23 @@ const navItems = [
     },
     {
         id: 2,
-        label: "Arbeitgeber in Stadtname",
+        label: "Arbeitgeberliste",
         link: "/employers",
     },
     {
         id: 3,
-        label: "Suchprofil anlegen",
-        link: "/profile/create",
+        label: "Suchprofil",
+        link: "/profile",
     },
     {
         id: 4,
         label: "Über Uns",
-        link: "/aboutus",
+        link: "/about_us",
     },
     {
         id: 5,
-        label: "Beratung",
-        link: "/advice",
+        label: "App downloaden",
+        link: "/app_download",
     },
 ];
 
@@ -39,7 +39,7 @@ const Header = () => {
     const pathname = usePathname();
     const [nav, setNav] = useState(false);
     return (
-        <div className="z-50 flex justify-between items-center w-full h-20 px-16 text-black bg-[#AEA6FC] fixed nav">
+        <div className="z-50 flex justify-between items-center w-full h-20 px-16 text-black bg-[#E5F0FB] fixed nav">
             <div className="relative !w-[180px] min-w-[150px] !min-h-[30px]">
                 <Link href="/">
                     <Image
@@ -71,7 +71,7 @@ const Header = () => {
                 <Button variant="ghost" className="text-[15px] font-normal bg-white hover:text-gray-500">
                     <Link href="/profile"> Mein Account </Link>
                 </Button>
-                <Button variant="ghost" className="text-[15px] font-normal bg-yellow-400 hover:bg-yellow-400 hover:text-gray-500">
+                <Button variant="ghost" className="text-[15px] font-medium bg-yellow-400 hover:bg-yellow-400 hover:text-gray-500">
                     <Link href="/jobs/create"> Jobanzeige schalten </Link>
                 </Button>
             </div>
@@ -85,7 +85,7 @@ const Header = () => {
             </div>
 
             {nav && (
-                <div className="absolute top-20 left-0 w-full h-screen bg-gradient-to-b from-[#AEA6FC] to-gray-500 text-black">
+                <div className="absolute top-20 left-0 w-full h-screen bg-gradient-to-b from-[#E5F0FB] to-gray-500 text-black">
                     <ul className="flex flex-col justify-center items-center ">
                         {navItems.map(({ id, label, link }) => (
                             <li
@@ -102,7 +102,7 @@ const Header = () => {
                         <Button variant="ghost" className="bg-white min-w-[170px] text-[15px] font-normal hover:text-gray-500">
                             <Link href="/profile"> Mein Account </Link>
                         </Button>
-                        <Button variant="ghost" className="bg-[#FFDE00] text-[15px] font-normal hover:bg-[#FFDE00] hover:text-gray-500">
+                        <Button variant="ghost" className="bg-[#FFDE00] text-[15px] font-medium hover:bg-[#FFDE00] hover:text-gray-500">
                             <Link href="/jobs/create"> Jobanzeige schalten </Link>
                         </Button>
                     </div>
