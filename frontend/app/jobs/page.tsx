@@ -18,6 +18,7 @@ import { TfiMenuAlt } from "react-icons/tfi";
 
 import SearchPanel from "@/components/searchPanel";
 import { jobs } from "@/lib/mocks";
+import FilterUnit from '@/components/filterUnit';
 
 const Jobs = () => {
     const router = useRouter();
@@ -27,15 +28,19 @@ const Jobs = () => {
         setSearchKey(_searchKey);
     };
 
+    const handleFilter = (_data: any) => {
+        console.log("filter", _data);
+    };
+
     return (
         <div className="py-20">
             <SearchPanel onSubmit={searchJobs} />
-            <div className="py-5 flex flex-row">
-                <div className='filters md:flex flex-col hidden'>
-
+            <div className="py-8 px-16 flex flex-row gap-10">
+                <div className='filters md:flex flex-col w-96 p-5 border rounded-lg'>
+                    <FilterUnit onChange={handleFilter} />
                 </div>
-                <div>
-                    <div className="flex md:flex-row flex-col justify-between items-center pb-3 pt-9">
+                <div className="w-full">
+                    <div className="flex md:flex-row flex-col justify-between items-start py-3">
                         <div>
                             <div className="text-4xl font-bold">Neue Jobs</div>
                             <div className="text-md text-gray-500 py-2 pt-4">Seite 1 von 20</div>
@@ -49,7 +54,7 @@ const Jobs = () => {
                             </Button>
                         </div>
                     </div>
-                    <div>
+                    <div className='flex flex-col'>
                         {jobs?.slice(0, 8)?.map((job, i) =>
                             < Card key={i} className="group flex justify-between items-center px-5 py-1 my-2 gap-3 cursor-pointer shadow-sm transition duration-300 hover:shadow-lg hover:border hover:border-blue-300">
                                 <div className="flex flex-row items-center gap-5">
@@ -64,10 +69,10 @@ const Jobs = () => {
                                         />
                                     </span>
                                     <CardHeader className="p-0 py-6">
-                                        <CardTitle className="text-md">{job?.title}</CardTitle>
-                                        <CardDescription>
-                                            {job?.description}
-                                        </CardDescription>
+                                        <CardDescription className="text-sm font-light">{job?.remote}</CardDescription>
+                                        <CardTitle className="text-lg font-medium">
+                                            {job?.title}
+                                        </CardTitle>
                                     </CardHeader>
                                 </div>
 
