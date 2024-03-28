@@ -29,7 +29,7 @@ const FilterUnit: NextPage<FilterUnitProps> = ({ wrapperClassName, items, onChan
                             <Checkbox id={`id-${item}`} />
                             <label
                                 htmlFor={`id-${item}`}
-                                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                className="cursor-pointer text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                             >
                                 {item}
                             </label>
