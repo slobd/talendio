@@ -9,7 +9,6 @@ const QuickRegisterPanel: NextPage = () => {
     const [data, setData] = useState<UserType>();
 
     const handleInput = (e: any) => {
-        console.log("e.target.value", e.target.value);
         setData({
             ...data,
             [e.target.name]: e.target.value,
@@ -18,7 +17,7 @@ const QuickRegisterPanel: NextPage = () => {
 
     return (
         <div className="bg-[#ADA6FC] p-10 my-10 rounded-sm">
-            <div className="md:text-4xl text-2xl font-bold">
+            <div className="md:text-4xl text-3xl font-bold">
                 Die neuesten Jobs per E-Mail
             </div>
             <div className="flex flex-wrap justify-center items-start mt-7 mb-3">
@@ -62,9 +61,9 @@ const QuickRegisterPanel: NextPage = () => {
                                 <div className="font-bold cursor-pointer">Hier klicken</div>
                             </div>
                         </div>
-                        <div className="flex flex-col justify-start h-10 absolute right-[114px]">
+                        <div className="flex flex-col justify-start h-10">
                             <div className="flex flex-row justify-end items-center text-[8px] cursor-pointer">
-                                <div>FriendlyCaptcha</div>
+                                <div className="xl:block hidden">FriendlyCaptcha</div>
                                 <TbArrowsUp className="rotate-45 ml-0.5" />
                             </div>
                         </div>

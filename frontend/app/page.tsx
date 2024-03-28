@@ -88,9 +88,9 @@ export default function Home() {
       {/* Search Panel */}
       <SearchPanel onSubmit={searchJobs} />
       {/* Matching Jobs */}
-      <div className="w-full px-16">
+      <div className="w-full md:px-16 px-4">
         <div className="flex md:flex-row flex-col justify-between items-center pb-3 pt-9">
-          <div className="text-4xl font-bold">Neue Jobangebote</div>
+          <div className="md:text-4xl text-3xl font-bold">Neue Jobangebote</div>
           <div className="flex gap-3 md:pt-5 pt-2">
             <Button variant="outline" className="border-2 border-black rounded-sm font-bold">
               Alle Jobs anzeigen
@@ -107,7 +107,7 @@ export default function Home() {
         <Tabs
           value={activeJobTab}
         >
-          <TabsList className="flex justify-start flex-wrap h-auto">
+          <TabsList className="flex justify-start flex-wrap overflow-auto">
             {matchJobTabs?.map((tab: OptionType, index) =>
               <TabsTrigger
                 key={index}
@@ -120,59 +120,51 @@ export default function Home() {
             )}
           </TabsList>
           <TabsContent value={activeJobTab}>
-            <Carousel
-              opts={{ align: "start" }}
-              className="w-full"
-            >
-              <CarouselContent>
-                {Array.from({ length: jobs.length / 6 }).map((_, index) => (
-                  <CarouselItem key={index} className="md:basis-1/2">
-                    {jobs?.slice(index * 6, index * 6 + 5)?.map((job, i) =>
-                      < Card key={i} className="group flex justify-between items-center px-5 py-1 my-2 gap-3 cursor-pointer shadow-sm transition duration-300 hover:shadow-lg hover:border hover:border-blue-300">
-                        <div className="flex flex-row items-center gap-5">
-                          <div className="relative w-auto min-w-[50px]">
-                            <Image
-                              className="w-auto h-full"
-                              src={job?.logo}
-                              alt="Logo"
-                              width={50}
-                              height={30}
-                              priority
-                            />
-                          </div>
-                          <CardHeader className="p-0 py-6">
-                            <CardDescription className="text-sm font-light">{job?.remote}</CardDescription>
-                            <CardTitle className="text-lg font-medium">
-                              {job?.title}
-                            </CardTitle>
-                          </CardHeader>
-                        </div>
-
-                        <CardFooter className="flex items-center p-0">
-                          <Button
-                            size="icon"
-                            variant="ghost"
-                            onClick={() => { router.push("/jobdetail") }}
-                          >
-                            <FaArrowRightLong className="h-5 w-5 bg-white transition duration-300 group-hover:scale-x-140 group-hover:text-blue-500 group-hover:translate-x-2" />
-                          </Button>
-                        </CardFooter>
-                      </Card>
-                    )}
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-            </Carousel>
+            <div className="flex flex-wrap justify-start items-start">
+              {jobs?.slice(0, 12)?.map((job, index) =>
+                <div key={index} className="xl:w-1/2 w-full p-3">
+                  < Card className="group flex justify-between items-center md:px-5 px-1 py-1 my-2 cursor-pointer shadow-sm transition duration-300 hover:shadow-lg hover:border hover:border-blue-300">
+                    <div className="flex flex-row items-center md:gap-5 gap-2">
+                      <div className="relative w-auto min-w-[50px]">
+                        <Image
+                          className="w-auto h-full"
+                          src={job?.logo}
+                          alt="Logo"
+                          width={50}
+                          height={30}
+                          priority
+                        />
+                      </div>
+                      <CardHeader className="p-0 py-6">
+                        <CardDescription className="text-sm font-light">{job?.remote}</CardDescription>
+                        <CardTitle className="text-lg font-medium">
+                          {job?.title}
+                        </CardTitle>
+                      </CardHeader>
+                    </div>
+                    <CardFooter className="flex items-center p-0">
+                      <Button
+                        size="icon"
+                        variant="ghost"
+                        onClick={() => { router.push("/jobdetail") }}
+                      >
+                        <FaArrowRightLong className="h-5 w-5 bg-white transition duration-300 group-hover:scale-x-140 group-hover:text-blue-500 group-hover:translate-x-2" />
+                      </Button>
+                    </CardFooter>
+                  </Card>
+                </div>
+              )}
+            </div>
           </TabsContent>
         </Tabs>
       </div>
       {/* Newsletter  */}
       <NewsletterPanel />
       {/* Empolyers */}
-      <div className="w-full px-16">
+      <div className="w-full md:px-16 px-4">
         <div className="flex md:flex-row flex-col justify-between items-center pb-3 pt-9">
           <div>
-            <div className="text-4xl font-bold">Arbeitgeber in Stadtname</div>
+            <div className="md:text-4xl text-3xl font-bold md:text-start text-center">Arbeitgeber in Stadtname</div>
             <div className="text-md text-gray-500 py-2 pt-4">Entdecke interessante Unternehmen in Deiner Stadt</div>
           </div>
           <div className="flex gap-3 md:pt-5 pt-2">
@@ -185,7 +177,7 @@ export default function Home() {
         <Tabs
           value={activeEmployerTab}
         >
-          <TabsList className="flex justify-start flex-wrap h-auto">
+          <TabsList className="flex justify-start flex-wrap overflow-auto">
             {employerTabs?.map((tab: OptionType, index) =>
               <TabsTrigger
                 key={index}
@@ -227,7 +219,7 @@ export default function Home() {
                         <Button
                           variant="ghost"
                           className="text-xs font-bold mb-5"
-                          onClick={() => {}}
+                          onClick={() => { }}
                         >
                           Unternehmen ansehen
                           <MdKeyboardArrowRight className="h-5 w-5 bg-extrabold" />
@@ -244,10 +236,10 @@ export default function Home() {
         </Tabs>
       </div>
       {/* Magazine */}
-      <div className="w-full px-16">
+      <div className="w-full md:px-16 px-4">
         <div className="flex md:flex-row flex-col justify-between items-center pb-3 pt-9">
           <div>
-            <div className="text-4xl font-bold">Magazin</div>
+            <div className="md:text-4xl text-3xl font-bold">Magazin</div>
           </div>
           <div className="flex gap-3 md:pt-5 pt-2">
             <Button variant="outline" className="border-2 border-black rounded-sm font-bold">
@@ -259,7 +251,7 @@ export default function Home() {
         <Tabs
           value={activeMagazineTab}
         >
-          <TabsList className="flex justify-start flex-wrap h-auto">
+          <TabsList className="flex justify-start flex-wrap overflow-auto">
             {magazineTabs?.map((tab: OptionType, index) =>
               <TabsTrigger
                 key={index}
@@ -301,9 +293,9 @@ export default function Home() {
         </Tabs>
       </div>
       {/* Hot Topics */}
-      <div className="w-full px-16">
+      <div className="w-full md:px-16 px-4">
         <div className="flex md:flex-row flex-col justify-between items-center pb-3 pt-9">
-          <div className="text-4xl font-bold">Veranstaltungen</div>
+          <div className="md:text-4xl text-3xl font-bold">Veranstaltungen</div>
           <div className="flex gap-3 md:pt-5 pt-2">
             <Button variant="outline" className="border-2 border-black rounded-sm font-bold">
               Alle Artikel
@@ -314,7 +306,7 @@ export default function Home() {
         <Tabs
           value={activeTopicTab}
         >
-          <TabsList className="flex justify-start flex-wrap h-auto">
+          <TabsList className="flex justify-start flex-wrap overflow-auto">
             {topicTabs?.map((tab: OptionType, index) =>
               <TabsTrigger
                 key={index}
@@ -353,19 +345,13 @@ export default function Home() {
       </div>
       {/* Newsletter  */}
       <NewsletterPanel />
-      {/* Studien & Tools */}
-      <div className="w-full px-16">
+      {/* Studies & Tools */}
+      <div className="w-full md:px-16 px-4">
         <div className="flex md:flex-row flex-col justify-between items-center pb-3 pt-9">
           <div>
-            <div className="text-4xl font-bold">Studien & Tools</div>
+            <div className="md:text-4xl text-3xl font-bold">Studies & Tools</div>
             <div className="text-md text-gray-500 py-2 pt-4">Die Weiterbildung für Onliner</div>
           </div>
-          {/* <div className="flex gap-3 md:pt-5 pt-2">
-            <Button variant="outline" className="border-2 border-black rounded-sm font-bold">
-              Alle Reports
-              <MdKeyboardArrowRight className="w-7 h-7 pl-1" />
-            </Button>
-          </div> */}
         </div>
         <Tabs
           value={""}
@@ -378,10 +364,10 @@ export default function Home() {
               <CarouselContent>
                 {tools?.map((item, index) => (
                   <CarouselItem key={index} className="lg:basis-1/2">
-                    <div className="border-none flex flex-row justify-start items-start my-2 gap-3 cursor-pointer transition duration-300">
-                      <span className="sm:w-[180px] sm:h-[250px] sm:min-w-[180px] min-w-[180px] min-h-[250px] overflow-hidden rounded-md">
+                    <div className="border-none flex sm:flex-row flex-col justify-start sm:items-start items-center my-2 gap-3 cursor-pointer transition duration-300">
+                      <span className="sm:w-auto sm:h-auto min-w-[180px] min-h-[250px] overflow-hidden rounded-md">
                         <Image
-                          className="sm:h-[250px] h-[180px] hover:scale-105 transition duration-300"
+                          className="w-auto min-h-[250px] max-h-[250px] hover:scale-105 transition duration-300"
                           src={item?.image}
                           alt="study and tools"
                           width={180}
@@ -390,7 +376,7 @@ export default function Home() {
                         />
                       </span>
                       <div className="p-0">
-                        <div className="text-xl font-bold mb-2">{item?.title}</div>
+                        <div className="text-xl font-bold mb-2 sm:text-start text-center sm:px-0 px-4">{item?.title}</div>
                         <div>
                           {item?.benefits?.map((item, i) =>
                             <div key={i} className="flex flex-row justify-start gap-3 text-sm my-2.5">
@@ -399,13 +385,16 @@ export default function Home() {
                             </div>
                           )}
                         </div>
-                        <Button
-                          variant="ghost"
-                          className="font-bold my-2 rounded-sm bg-yellow-500 hover:bg-yellow-600 hover:scale-105 hover:text-white"
-                          onClick={() => { }}
-                        >
-                          ZUM REPORT
-                        </Button>
+                        <div className="flex sm:justify-start justify-center">
+                          <Button
+                            variant="ghost"
+                            className="font-bold my-2 rounded-sm bg-yellow-500 hover:bg-yellow-600 hover:text-white"
+                            onClick={() => { }}
+                          >
+                            ZUM REPORT
+                          </Button>
+                        </div>
+
                       </div>
                     </div>
                   </CarouselItem>
@@ -418,18 +407,12 @@ export default function Home() {
         </Tabs>
       </div>
       {/* Partner */}
-      <div className="w-full px-16">
+      <div className="w-full md:px-16 px-4">
         <div className="flex md:flex-row flex-col justify-between items-center pb-3 pt-9">
           <div>
-            <div className="text-4xl font-bold">Partner</div>
+            <div className="md:text-4xl text-3xl font-bold md:text-start text-center">Partner</div>
             <div className="text-md text-gray-500 py-2 pt-4">Die bunte Welt unserer OMR Familie und OMR Partner Cases!</div>
           </div>
-          {/* <div className="flex gap-3 md:pt-5 pt-2">
-            <Button variant="outline" className="border-2 border-black rounded-sm font-bold">
-              Alle OMR Family & Partner
-              <MdKeyboardArrowRight className="w-7 h-7 pl-1" />
-            </Button>
-          </div> */}
         </div>
         <Tabs
           value={""}
