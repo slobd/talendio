@@ -26,10 +26,10 @@ const FilterUnit: NextPage<FilterUnitProps> = ({ wrapperClassName, items, onChan
                 {items?.slice(0, 5).map((item, index) =>
                     <div key={index} className="flex flex-row justify-between items-start m-1">
                         <div className="flex flex-row justify-start items-center gap-3">
-                            <Checkbox id={`id-${index}`} />
+                            <Checkbox id={`id-${item}`} />
                             <label
-                                htmlFor="terms"
-                                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                htmlFor={`id-${item}`}
+                                className="cursor-pointer text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                             >
                                 {item}
                             </label>
