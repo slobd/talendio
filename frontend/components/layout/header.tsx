@@ -42,10 +42,10 @@ const Header = () => {
 
     return (
         <div className="rounded-md md:px-16 px-2 z-50 flex justify-between items-center w-full h-20 text-black bg-[#E5F0FB] fixed nav">
-            <div className="relative !w-[180px] min-w-[180px] !min-h-[30px]">
-                <Link href="/" className='w-full h-auto'>
+            <div className="w-auto min-w-[50px] !w-[180px] min-w-[180px] !min-h-[30px]">
+                <Link href="/" className='w-auto min-w-[50px]'>
                     <Image
-                        className="w-auto dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
+                        className="w-auto h-full"
                         src="/headerlogo.png"
                         alt="Logo"
                         width={180}
