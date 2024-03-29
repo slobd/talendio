@@ -498,4 +498,5 @@ export const remotes = [
     "Hybrid",
     "On-Site",
     "100% Remote",
-]
+];
+

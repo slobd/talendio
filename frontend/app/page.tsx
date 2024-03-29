@@ -125,7 +125,10 @@ export default function Home() {
             <div className="flex flex-wrap justify-start items-start">
               {jobs?.slice(0, 8)?.map((job, index) =>
                 <div key={index} className="xl:w-1/2 w-full p-2 py-0">
-                  < Card className="group flex justify-between items-center md:px-5 px-1 py-1 my-2 cursor-pointer shadow-sm transition duration-300 hover:shadow-lg hover:border hover:border-blue-300">
+                  < Card 
+                    className="group flex justify-between items-center md:px-5 px-1 py-1 my-2 cursor-pointer shadow-sm transition duration-300 hover:shadow-lg hover:border hover:border-blue-300"
+                    onClick={() => router.push("/jobs/detail")}
+                  >
                     <div className="flex flex-row items-center md:gap-5 gap-2">
                       <div className="relative w-auto min-w-[50px]">
                         <Image
@@ -133,7 +136,7 @@ export default function Home() {
                           src={job?.logo}
                           alt="Logo"
                           width={50}
-                          height={30}
+                          height={50}
                           priority
                         />
                       </div>
