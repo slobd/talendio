@@ -13,7 +13,7 @@ const SearchPanel: NextPage<SearchPanelProps> = ({ wrapperClassName, onSubmit })
     const [input, setInput] = useState("");
 
     return (
-        <div className={`${wrapperClassName} flex md:flex-row flex-col justify-center items-center w-full min-h-[180px] md:px-16 px-4 bg-[#3B289E]`}>
+        <div className={`${wrapperClassName} rounded-md flex md:flex-row flex-col justify-center items-center w-full min-h-[180px] md:px-16 px-4 bg-[#3B289E]`}>
             <div className="md:text-4xl text-3xl md:w-2/5 w-full text-white py-2 font-light">
                 Finde die besten Jobs in
                 <span className="bg-bottom bg-no-repeat bg-contain pb-1 font-medium" style={{
