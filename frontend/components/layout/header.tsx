@@ -41,7 +41,7 @@ const Header = () => {
     const [isHoveredItem, setIsHoveredItem] = useState(0);
 
     return (
-        <div className="md:px-16 px-2 z-50 flex justify-between items-center w-full h-20 text-black bg-[#E5F0FB] fixed nav">
+        <div className="rounded-md md:px-16 px-2 z-50 flex justify-between items-center w-full h-20 text-black bg-[#E5F0FB] fixed nav">
             <div className="relative !w-[180px] min-w-[180px] !min-h-[30px]">
                 <Link href="/" className='w-full h-auto'>
                     <Image

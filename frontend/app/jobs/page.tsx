@@ -19,7 +19,7 @@ import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import SearchPanel from "@/components/searchPanel";
 import { jobs } from "@/lib/mocks";
 import FilterUnit from '@/components/filterUnit';
-import QuickRegisterPanel from '@/components/quickRegisterPanel';
+import QuickRegister from '@/components/quickRegister';
 import { jobCategories, locations, experiences, remotes } from '@/lib/mocks';
 import { useClientMediaQuery } from '@/components/hooks/useClientMediaQuery';
 
@@ -113,7 +113,7 @@ const Jobs = () => {
                                 </CardFooter>
                             </Card>
                         )}
-                        <QuickRegisterPanel />
+                        <QuickRegister />
                         {jobs?.slice(9, 20)?.map((job, i) =>
                             < Card key={i} className="group flex justify-between items-center px-5 py-1 my-2 gap-3 cursor-pointer shadow-sm transition duration-300 hover:shadow-lg hover:border hover:border-blue-300">
                                 <div className="flex flex-row items-center gap-5">

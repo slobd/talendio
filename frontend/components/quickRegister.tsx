@@ -5,7 +5,7 @@ import { Button } from "./ui/button";
 import { UserType } from "@/lib/types";
 import { BsShieldFillExclamation, BsShieldFillCheck } from "react-icons/bs";
 import { TbArrowsUp } from "react-icons/tb";
-const QuickRegisterPanel: NextPage = () => {
+const QuickRegister: NextPage = () => {
     const [data, setData] = useState<UserType>();
 
     const handleInput = (e: any) => {
@@ -85,4 +85,4 @@ const QuickRegisterPanel: NextPage = () => {
     );
 };
 
-export default QuickRegisterPanel;
+export default QuickRegister;
