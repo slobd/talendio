@@ -8,7 +8,7 @@ import { CiBookmark } from "react-icons/ci";
 const RecruitingTeamCard: NextPage = () => {
 
     return (
-        <div className="bg-white p-4 mt-10 rounded-sm text-white rounded-md border border-gray-400">
+        <div className="lg:fixed relative md:mr-10 mr-0 bg-white p-4 mt-10 rounded-sm text-white rounded-md border border-gray-400">
             <div className="flex flex-row lg:justify-start justify-center items-center pt-2 pb-5 gap-3">
                 <div className="relative w-auto lg:min-w-[50px] min-w-[25px] p-3 border border-gray-400 rounded-md">
                     <Image

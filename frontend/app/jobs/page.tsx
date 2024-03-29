@@ -13,6 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { LuArrowLeftRight } from "react-icons/lu";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 
@@ -45,7 +46,7 @@ const Jobs = () => {
     return (
         <div className="py-20">
             <SearchPanel onSubmit={searchJobs} />
-            <div className="md:px-16 px-2 py-8 flex flex-row gap-10">
+            <div className="md:px-16 px-4 py-8 flex flex-row gap-10">
                 <div className={`w-[300px] min-w-[300px] transition-[margin-left] ease-in-out duration-500 fixed md:static top-[300px] bottom-0 left-0 z-10 ${showFilterPanel ? "ml-0" : "ml-[-300px] md:ml-0"}`}>
                     <Button
                         className="border p-0 w-10 h-10 flex md:hidden items-center justify-center bg-white text-black shadow absolute top-0 right-0 translate-x-full rounded-r-lg cursor-pointer"
@@ -75,7 +76,7 @@ const Jobs = () => {
                                     <TfiMenuAlt className="w-6 h-6" />
                                 </Button>
                                 <Button variant="outline" className="p-2">
-                                    <FaArrowRightLong className="w-6 h-6" />
+                                    <LuArrowLeftRight className="w-6 h-6" />
                                 </Button>
                             </div>
                         </div>
@@ -85,7 +86,7 @@ const Jobs = () => {
                         {jobs?.slice(0, 8)?.map((job, i) =>
                             < Card
                                 key={i}
-                                className="group flex justify-between items-center md:px-5 px-1 py-0 my-2 cursor-pointer shadow-sm transition duration-300 hover:shadow-lg hover:border hover:border-blue-300"
+                                className="group flex justify-between items-center md:px-5 px-1 py-0 my-2 cursor-pointer transition duration-300 hover:border hover:border-blue-300"
                                 onClick={() => router.push("/jobs/detail")}
                             >
                                 <div className="flex flex-row items-center md:gap-5 gap-2">
@@ -113,7 +114,7 @@ const Jobs = () => {
                                         variant="ghost"
                                         onClick={() => { router.push("/jobdetail") }}
                                     >
-                                        <MdKeyboardArrowRight className="h-5 w-5 bg-white transition duration-300 group-hover:scale-x-140 group-hover:text-blue-500 group-hover:translate-x-2" />
+                                        <FaArrowRightLong className="h-5 w-5 bg-white transition duration-300 group-hover:scale-x-140 group-hover:text-blue-500 group-hover:translate-x-2" />
                                     </Button>
                                 </CardFooter>
                             </Card>
@@ -122,7 +123,7 @@ const Jobs = () => {
                         {jobs?.slice(9, 20)?.map((job, i) =>
                             < Card
                                 key={i}
-                                className="group flex justify-between items-center md:px-5 px-1 py-0 my-2 cursor-pointer shadow-sm transition duration-300 hover:shadow-lg hover:border hover:border-blue-300"
+                                className="group flex justify-between items-center md:px-5 px-1 py-0 my-2 cursor-pointer transition duration-300 hover:border hover:border-blue-300"
                                 onClick={() => router.push("/jobs/detail")}
                             >
                                 <div className="flex flex-row items-center gap-5">
@@ -150,7 +151,7 @@ const Jobs = () => {
                                         variant="ghost"
                                         onClick={() => { router.push("/jobdetail") }}
                                     >
-                                        <MdKeyboardArrowRight className="h-5 w-5 bg-white transition duration-300 group-hover:scale-x-140 group-hover:text-blue-500 group-hover:translate-x-2" />
+                                        <FaArrowRightLong className="h-5 w-5 bg-white transition duration-300 group-hover:scale-x-140 group-hover:text-blue-500 group-hover:translate-x-2" />
                                     </Button>
                                 </CardFooter>
                             </Card>

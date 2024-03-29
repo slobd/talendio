@@ -20,7 +20,7 @@ const Jobs = () => {
 
     return (
         <div className="pt-20 pb-10">
-            <div className="md:px-16 px-2 pt-8 pb-2 flex flex-row justify-between items-center gap-10">
+            <div className="md:px-16 px-4 pt-8 pb-2 flex flex-row justify-between items-center gap-10">
                 <div className="flex md:flex-row flex-col gap-6 justify-between items-center pb-10 border-b">
                     <div className="relative w-auto min-w-[100px] p-5 border border-gray-400 rounded-md">
                         <Image
@@ -35,9 +35,9 @@ const Jobs = () => {
                     <div className="flex flex-col">
                         <div className="font-semibold text-xs text-gray-600">EPPLE GmbH</div>
                         <div className="text-[28px] font-bold mt-1 mb-3">Content Marketing Manager (m/w/d) Schwerpunkt Social Media</div>
-                        <div className="flex flex-wrap justify-start items-center gap-x-3 gap-y-1 text-xs">
+                        <div className="flex flex-wrap justify-start items-center gap-x-3 gap-y-1 text-xs font-light">
                             <div className="flex flex-row justify-start items-center gap-1 px-2 py-0 border border-gray-400 rounded-full">
-                                <MdApartment className="w-6 h-6" />
+                                <MdApartment className="w-5 h-5 font-light" />
                                 SVT PRODUCTS GMBH
                             </div>
                             {Array.from({ length: 1 }).map((item, index) =>
@@ -45,20 +45,20 @@ const Jobs = () => {
                                     key={index}
                                     className="flex flex-row justify-start items-center gap-1 px-2 py-0 border border-gray-400 rounded-full"
                                 >
-                                    <LuGraduationCap className="w-6 h-6" />
+                                    <LuGraduationCap className="w-5 h-5 font-light" />
                                     PROFESSIONAL (2 - 5)
                                 </div>
                             )}
                             <div className="flex flex-row justify-start items-center gap-1 px-2 py-0 border border-gray-400 rounded-full">
-                                <IoLocationOutline className="w-6 h-6" />
+                                <IoLocationOutline className="w-5 h-5 font-light" />
                                 HAMBURG (HYBRID)
                             </div>
                             <div className="flex flex-row justify-start items-center gap-1 px-2 py-0 border border-gray-400 rounded-full">
-                                <MdOutlineCalendarMonth className="w-6 h-6" />
+                                <MdOutlineCalendarMonth className="w-5 h-5 font-light" />
                                 FULL TIME
                             </div>
                             <div className="flex flex-row justify-start items-center gap-1 px-2 py-0 border border-gray-400 rounded-full">
-                                <LuAlarmClock className="w-6 h-6" />
+                                <LuAlarmClock className="w-5 h-5 font-light" />
                                 AS SOON AS POSSIBLE
                             </div>
                         </div>
@@ -74,9 +74,9 @@ const Jobs = () => {
                 </div>
             </div>
             <div className="md:px-16 px-2 pt-8 pb-2 flex lg:flex-row flex-col justify-between gap-10">
-                <div className="flex flex-col gap-6 justify-between items-center">
+                <div className="flex flex-col gap-6 justify-between items-center ">
                     {/* demo html */}
-                    <div className="text-common-styles richtext">
+                    <div className="font-light">
                         <div>
                             <p>Seit 1969 gehören wir, die svt Unternehmensgruppe, zu den führenden Anbietern im passiven Brandschutz und der
                                 Schadensanierung. Bundesweit sind wir an mehr als 60 Standorten vertreten und operieren mit eigenen
