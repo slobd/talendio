@@ -31,6 +31,7 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import { LuArrowLeftRight } from "react-icons/lu";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { GiCheckMark } from "react-icons/gi";
+import { IoLocationSharp } from "react-icons/io5";
 import { jobs, employers, magazines, topics, tools, partners } from "@/lib/mocks";
 import NewsletterPanel from "@/components/newsletter";
 import { lightColors } from "@/lib/constants";
@@ -73,6 +74,7 @@ const topicTabs: OptionType[] = [
 export default function Home() {
   const router = useRouter();
   const [searchKey, setSearchKey] = useState("");
+  const [cardView, setCardView] = useState(false);
   const [activeJobTab, setActiveJobTab] = useState("alle");
   const [activeEmployerTab, setActiveEmployerTab] = useState("top_employer");
   const [activeMagazineTab, setActiveMagazineTab] = useState("top_employer");
@@ -101,8 +103,12 @@ export default function Home() {
             <Button className="p-2">
               <TfiMenuAlt className="w-6 h-6" />
             </Button>
-            <Button variant="outline" className="p-2">
-              <LuArrowLeftRight className="w-6 h-6" />
+            <Button
+              variant="outline"
+              className={`p-2 ${cardView ? "!text-white !bg-primary" : "text-black bg-white"}`}
+              onClick={() => setCardView(prev => !prev)}
+            >
+              <LuArrowLeftRight className={`w-6 h-6`} />
             </Button>
           </div>
         </div>
@@ -123,9 +129,9 @@ export default function Home() {
           </TabsList>
           <TabsContent value={activeJobTab}>
             <div className="flex flex-wrap justify-start items-start">
-              {jobs?.slice(0, 8)?.map((job, index) =>
+              {!cardView && jobs?.slice(0, 8)?.map((job, index) =>
                 <div key={index} className="xl:w-1/2 w-full p-2 py-0">
-                  < Card 
+                  < Card
                     className="group flex justify-between items-center md:px-5 px-1 py-1 my-2 cursor-pointer shadow-sm transition duration-300 hover:shadow-lg hover:border hover:border-blue-300"
                     onClick={() => router.push("/jobs/detail")}
                   >
@@ -155,6 +161,54 @@ export default function Home() {
                       >
                         <FaArrowRightLong className="h-5 w-5 bg-white transition duration-300 group-hover:scale-x-140 group-hover:text-blue-500 group-hover:translate-x-2" />
                       </Button>
+                    </CardFooter>
+                  </Card>
+                </div>
+              )}
+              {cardView && jobs?.slice(0, 8)?.map((job, index) =>
+                <div key={index} className="xl:w-1/4 lg:w-1/3 md:w-1/2 w-full p-2 py-0">
+                  < Card
+                    className="group flex flex-col justify-between items-center md:px-5 px-1 py-1 my-2 cursor-pointer shadow-sm transition duration-300 hover:shadow-lg hover:border hover:border-blue-300"
+                    onClick={() => router.push("/jobs/detail")}
+                  >
+                    <div className="mt-3 w-full flex flex-row justify-between items-center md:gap-5 gap-2">
+                      <div className="relative w-auto min-w-[50px]">
+                        <Image
+                          className="w-auto h-full"
+                          src={job?.logo}
+                          alt="Logo"
+                          width={50}
+                          height={50}
+                          priority
+                        />
+                      </div>
+                      <div className="bg-[#E9E19D] px-4 py-1 text-xs rounded-md">
+                        {job?.remote}
+                      </div>
+                    </div>
+                    <CardHeader className="p-0 py-6">
+                      <CardDescription className="text-sm font-normal text-[#215085]">{job?.company}</CardDescription>
+                      <CardTitle className="text-lg font-medium">
+                        {job?.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardFooter className="w-full flex items-center py-4 px-0 border-t">
+                      <div className="w-full flex flex-row justify-between items-center">
+                        <div className="flex flex-col justify-start items-start text-sm">
+                          <div className="font-bold flex flex-row justify-start items-center">
+                            <IoLocationSharp className="w-5 h-5" />
+                            <div>{job?.location}</div>
+                          </div>
+                          <div className="my-1 pl-1 font-medium text-gray-500">Vor zwei Tagen veroffentlicht</div>
+                        </div>
+                        <Button
+                          size="icon"
+                          variant="ghost"
+                          onClick={() => { router.push("/jobdetail") }}
+                        >
+                          <FaArrowRightLong className="h-5 w-5 bg-white transition duration-300 group-hover:scale-x-140 group-hover:text-blue-500 group-hover:translate-x-2" />
+                        </Button>
+                      </div>
                     </CardFooter>
                   </Card>
                 </div>
@@ -328,7 +382,7 @@ export default function Home() {
           <TabsContent value={activeTopicTab}>
             <div className="flex flex-wrap justify-start items-center">
               {topics?.map((topic, index) => (
-                <div key={index} className="flex xl:w-1/3 lg:w-1/2">
+                <div key={index} className="flex xl:w-1/3 lg:w-1/2 border-none">
                   <Card className="border-none flex flex-row justify-start items-center my-2 gap-3 cursor-pointer transition duration-300">
                     <span className="w-[100px] h-[55px] min-h-[55px] min-w-[100px] overflow-hidden rounded-md">
                       <Image
@@ -341,7 +395,7 @@ export default function Home() {
                       />
                     </span>
                     <CardHeader className="p-0">
-                      <CardTitle className="text-md">{topic?.name}: {topic?.title}</CardTitle>
+                      <CardTitle className="text-md font-medium">{topic?.name}: {topic?.title}</CardTitle>
                     </CardHeader>
                   </Card>
                 </div>

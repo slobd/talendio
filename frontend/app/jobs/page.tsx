@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MdKeyboardArrowRight } from "react-icons/md";
-import { LuArrowLeftRight } from "react-icons/lu";
+import { FaArrowRightLong } from "react-icons/fa6";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 
@@ -75,7 +75,7 @@ const Jobs = () => {
                                     <TfiMenuAlt className="w-6 h-6" />
                                 </Button>
                                 <Button variant="outline" className="p-2">
-                                    <LuArrowLeftRight className="w-6 h-6" />
+                                    <FaArrowRightLong className="w-6 h-6" />
                                 </Button>
                             </div>
                         </div>

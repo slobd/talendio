@@ -46,7 +46,7 @@ const Header = () => {
                 <Link href="/" className='w-full h-auto'>
                     <Image
                         className="w-auto dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-                        src="/logo.svg"
+                        src="/headerlogo.png"
                         alt="Logo"
                         width={180}
                         height={50}
