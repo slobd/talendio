@@ -22,6 +22,7 @@ import FilterUnit from '@/components/filterUnit';
 import QuickRegister from '@/components/quickRegister';
 import { jobCategories, locations, experiences, remotes } from '@/lib/mocks';
 import { useClientMediaQuery } from '@/components/hooks/useClientMediaQuery';
+import QuickJobAdPanel from '@/components/quickJobAdPanel';
 
 const Jobs = () => {
     const router = useRouter();
@@ -52,13 +53,13 @@ const Jobs = () => {
                     >
                         <MdOutlineKeyboardDoubleArrowRight className={`w-6 h-6 hover:text-white ${!showFilterPanel ? `rotate-0` : `rotate-180`} transition duration-300`} />
                     </Button>
-                    <div className='border rounded-md h-full overflow-auto py-4 bg-white'>
+                    <div className='border rounded-md overflow-auto md:h-auto h-full py-4 bg-white'>
                         <FilterUnit title={"Kategorien"} items={jobCategories} onChange={handleFilter} />
                         <FilterUnit title={"Orte"} items={locations} onChange={handleFilter} />
                         <FilterUnit title={"Erfahrung"} items={experiences} onChange={handleFilter} />
                         <FilterUnit title={"Remote"} items={remotes} onChange={handleFilter} />
                     </div>
-
+                    <QuickJobAdPanel />
                 </div>
                 <div className="w-full">
                     <div className="flex flex-col justify-between items-start py-1 w-full">

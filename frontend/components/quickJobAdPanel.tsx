@@ -1,12 +1,26 @@
+import Image from "next/image";
 import { NextPage } from "next";
 import { Button } from "./ui/button";
 
 const QuickJobAdPanel: NextPage = () => {
 
     return (
-        <div className="bg-[#ADA6FC] p-10 my-10 rounded-sm">
-            <div className="md:text-4xl text-3xl font-bold">
-                Die neuesten Jobs per E-Mail
+        <div className="md:block hidden bg-black p-10 my-10 rounded-sm text-white rounded-md">
+            <div className="md:text-4xl text-3xl font-bold ">
+                Anzeige erstellen
+            </div>
+            <div className="text-md font-medium py-8">
+                Schalte jetzt Deine Anzeige über OMR Jobs.
+            </div>
+            <div className="w-auto min-w-[100px] px-0 py-2">
+                <Image
+                    className="w-auto"
+                    src={"/clicks.png"}
+                    alt="Logo"
+                    width={150}
+                    height={70}
+                    priority
+                />
             </div>
             <div className="flex justify-center">
                 <Button
@@ -15,9 +29,6 @@ const QuickJobAdPanel: NextPage = () => {
                 >
                     ABONNIEREN
                 </Button>
-            </div>
-            <div className="mt-4 text-[10px] text-black font-medium">
-                Informationen bezüglich der Verarbeitung deiner personenbezogener Daten findest du in unserer Datenschutzerklärung: https://omr.com/de/datenschutz/. Deine E-Mail-Adresse wird nicht an Dritte weitergegeben und zu keinem anderen Zweck verwendet. Du kannst dich jederzeit von unserem Newsletter abmelden und somit deine Einwilligung für den Erhalt des Newsletters für die Zukunft widerrufen.
             </div>
         </div>
     );
