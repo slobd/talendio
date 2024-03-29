@@ -13,8 +13,8 @@ const SearchPanel: NextPage<SearchPanelProps> = ({ onSubmit }) => {
     return (
         <div className="w-full px-1">
             <div className={`rounded-md flex md:flex-row flex-col md:justify-between justify-center items-center min-h-[180px] md:px-16 px-4 bg-[#3B289E]`}>
-                <div className="md:text-4xl text-3xl md:w-2/5 w-full text-white pt-2 pb-3 px-0 font-light">
-                    <div className=""> Finde die besten Jobs </div>
+                <div className="md:text-4xl text-3xl md:w-2/5 w-full text-white py-2 px-0 font-light">
+                    <div className="whitespace-nowrap"> Finde die besten Jobs </div>
                     <div className="">
                         in
                         <span className="bg-bottom bg-no-repeat bg-contain pb-1 font-medium" style={{
@@ -27,7 +27,7 @@ const SearchPanel: NextPage<SearchPanelProps> = ({ onSubmit }) => {
                     </div>
                 </div>
 
-                <div className="flex md:w-1/2 w-full items-center space-x-2">
+                <div className="flex md:w-1/2 w-full items-center space-x-2 py-3">
                     <div className="relative w-full">
                         <Input
                             type="search"
