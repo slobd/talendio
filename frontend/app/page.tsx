@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image";
 import { useRouter } from 'next/navigation';
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   Tabs,
   TabsContent,
@@ -80,10 +80,26 @@ export default function Home() {
   const [activeMagazineTab, setActiveMagazineTab] = useState("top_employer");
   const [activeTopicTab, setActiveTopicTab] = useState("alle");
 
+  const cardContainerRef = useRef<HTMLDivElement>(null);
 
   const searchJobs = (_searchKey: string) => {
     setSearchKey(_searchKey);
   };
+
+  useEffect(() => {
+    const cards = cardContainerRef.current?.querySelectorAll('.job-card');
+    if (cards) {
+      let maxHeight = 0;
+
+      cards.forEach((card: any) => {
+        maxHeight = Math.max(maxHeight, card.clientHeight);
+      });
+
+      cards.forEach((card: any) => {
+        card.setAttribute('style', `height: ${maxHeight}px`);
+      });
+    }
+  }, [cardView]);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-start py-20">
@@ -128,7 +144,7 @@ export default function Home() {
             )}
           </TabsList>
           <TabsContent value={activeJobTab}>
-            <div className="flex flex-wrap justify-start items-start">
+            <div ref={cardContainerRef} className="flex flex-wrap justify-start items-start">
               {!cardView && jobs?.slice(0, 8)?.map((job, index) =>
                 <div key={index} className="xl:w-1/2 w-full p-2 py-0">
                   < Card
@@ -166,9 +182,9 @@ export default function Home() {
                 </div>
               )}
               {cardView && jobs?.slice(0, 8)?.map((job, index) =>
-                <div key={index} className="xl:w-1/4 lg:w-1/3 md:w-1/2 w-full p-2 py-0 flex-grow">
+                <div key={index} className="job-card xl:w-1/4 lg:w-1/3 md:w-1/2 w-full p-2 py-0 my-2">
                   < Card
-                    className="group flex flex-col justify-between items-center md:px-5 px-1 py-1 my-2 cursor-pointer shadow-sm transition duration-300 hover:border hover:border-blue-300"
+                    className="group h-full flex flex-col justify-between items-center md:px-5 px-1 py-1 my-2 cursor-pointer shadow-sm transition duration-300 hover:border hover:border-blue-300"
                     onClick={() => router.push("/jobs/detail")}
                   >
                     <div className="mt-3 w-full flex flex-row justify-between items-center md:gap-5 gap-2">
@@ -426,9 +442,9 @@ export default function Home() {
                 {tools?.map((item, index) => (
                   <CarouselItem key={index} className="lg:basis-1/2">
                     <div className="border-none flex sm:flex-row flex-col justify-start sm:items-start items-center my-2 gap-3 cursor-pointer transition duration-300">
-                      <span className="sm:w-auto sm:h-auto min-w-[180px] min-h-[250px] overflow-hidden rounded-md">
+                      <span className="w-auto sm:h-auto min-w-[180px] min-h-[250px] overflow-hidden rounded-md">
                         <Image
-                          className="w-auto min-h-[250px] max-h-[250px] hover:scale-105 transition duration-300"
+                          className="h-full min-h-[250px] max-h-[250px] hover:scale-105 transition duration-300"
                           src={item?.image}
                           alt="study and tools"
                           width={180}
