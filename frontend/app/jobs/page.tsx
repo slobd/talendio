@@ -83,7 +83,11 @@ const Jobs = () => {
                     </div>
                     <div className='flex flex-col'>
                         {jobs?.slice(0, 8)?.map((job, i) =>
-                            < Card key={i} className="group flex justify-between items-center md:px-5 px-1 py-0 my-2 cursor-pointer shadow-sm transition duration-300 hover:shadow-lg hover:border hover:border-blue-300">
+                            < Card
+                                key={i}
+                                className="group flex justify-between items-center md:px-5 px-1 py-0 my-2 cursor-pointer shadow-sm transition duration-300 hover:shadow-lg hover:border hover:border-blue-300"
+                                onClick={() => router.push("/jobs/detail")}
+                            >
                                 <div className="flex flex-row items-center md:gap-5 gap-2">
                                     <span className="w-auto min-w-[50px]">
                                         <Image
@@ -91,7 +95,7 @@ const Jobs = () => {
                                             src={job?.logo}
                                             alt="Logo"
                                             width={50}
-                                            height={30}
+                                            height={50}
                                             priority
                                         />
                                     </span>
@@ -116,7 +120,11 @@ const Jobs = () => {
                         )}
                         <QuickRegister />
                         {jobs?.slice(9, 20)?.map((job, i) =>
-                            < Card key={i} className="group flex justify-between items-center px-5 py-1 my-2 gap-3 cursor-pointer shadow-sm transition duration-300 hover:shadow-lg hover:border hover:border-blue-300">
+                            < Card
+                                key={i}
+                                className="group flex justify-between items-center md:px-5 px-1 py-0 my-2 cursor-pointer shadow-sm transition duration-300 hover:shadow-lg hover:border hover:border-blue-300"
+                                onClick={() => router.push("/jobs/detail")}
+                            >
                                 <div className="flex flex-row items-center gap-5">
                                     <span className="w-auto min-w-[50px]">
                                         <Image
@@ -124,7 +132,7 @@ const Jobs = () => {
                                             src={job?.logo}
                                             alt="Logo"
                                             width={50}
-                                            height={30}
+                                            height={50}
                                             priority
                                         />
                                     </span>
@@ -153,7 +161,6 @@ const Jobs = () => {
                                 <MdKeyboardArrowRight className="w-7 h-7 pl-1" />
                             </Button>
                         </div>
-
                     </div>
                 </div>
             </div>
