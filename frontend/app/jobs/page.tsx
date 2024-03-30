@@ -46,19 +46,16 @@ const Jobs = () => {
     }, [isMobile])
 
     useEffect(() => {
-        console.log("isMobile", isMobile)
         if (!isMobile) {
           const cards = cardContainerRef.current?.querySelectorAll('.job-card');
           if (cards) {
             let maxHeight = 0;
     
             cards.forEach((card: any) => {
-                console.log("card.clientHeight", card.clientHeight)
               maxHeight = Math.max(maxHeight, card.clientHeight);
             });
     
             cards.forEach((card: any) => {
-                console.log("")
               card.setAttribute('style', `height: ${maxHeight}px`);
             });
           }
