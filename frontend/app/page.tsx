@@ -152,8 +152,8 @@ export default function Home() {
                     className="group flex justify-between items-center md:px-5 px-1 py-1 my-2 cursor-pointer transition duration-300 hover:border hover:border-blue-300"
                     onClick={() => router.push("/jobs/detail")}
                   >
-                    <div className="flex flex-row items-center md:gap-5 gap-2">
-                      <div className="relative w-auto min-w-[50px]">
+                    <div className="flex flex-row items-center md:gap-5 gap-2 w-auto">
+                      <div className="flex justify-center items-center w-auto min-w-[50px] h-auto">
                         <Image
                           className="w-auto h-full"
                           src={job?.logo}
