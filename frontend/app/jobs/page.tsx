@@ -1,6 +1,6 @@
 "use client"
 import { useRouter } from 'next/navigation';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import {
     Card,
@@ -16,7 +16,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { LuArrowLeftRight } from "react-icons/lu";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
-
+import { IoLocationSharp } from "react-icons/io5";
 import SearchPanel from "@/components/searchPanel";
 import { jobs } from "@/lib/mocks";
 import FilterUnit from '@/components/filterUnit';
@@ -27,7 +27,9 @@ import { useClientMediaQuery } from '@/components/hooks/useClientMediaQuery';
 
 const Jobs = () => {
     const router = useRouter();
+    const cardContainerRef = useRef<HTMLDivElement>(null);
     const isMobile = useClientMediaQuery('(max-width: 768px)');
+    const [cardView, setCardView] = useState(false);
     const [searchKey, setSearchKey] = useState("");
     const [showFilterPanel, setShowFilterPanel] = useState(true);
 
@@ -42,6 +44,27 @@ const Jobs = () => {
     useEffect(() => {
         isMobile && setShowFilterPanel(false);
     }, [isMobile])
+
+    useEffect(() => {
+        console.log("isMobile", isMobile)
+        if (!isMobile) {
+          const cards = cardContainerRef.current?.querySelectorAll('.job-card');
+          if (cards) {
+            let maxHeight = 0;
+    
+            cards.forEach((card: any) => {
+                console.log("card.clientHeight", card.clientHeight)
+              maxHeight = Math.max(maxHeight, card.clientHeight);
+            });
+    
+            cards.forEach((card: any) => {
+                console.log("")
+              card.setAttribute('style', `height: ${maxHeight}px`);
+            });
+          }
+        }
+    
+      }, [cardView, isMobile]);
 
     return (
         <div className="py-20">
@@ -65,28 +88,34 @@ const Jobs = () => {
                 <div className="w-full">
                     <div className="flex flex-col justify-between items-start py-1 w-full">
                         <div>
-                            <div className="md:text-4xl text-3xl font-bold">Neue Jobs</div>
+                            <div className="md:text-4xl text-3xl font-bold whitespace-nowrap text-nowrap">Neue Jobs</div>
                         </div>
                         <div className="flex flex-row justify-between items-center w-full">
-                            <div className="text-md text-gray-500 py-2">Seite 1 von 20</div>
-                            <div className="flex gap-3 md:pt-3 pt-0">
+                            <div className="text-md text-gray-500 py-2 whitespace-nowrap text-nowrap">Seite 1 von 20</div>
+                            <div className="w-full flex justify-end gap-3 md:pt-5 pt-2">
                                 <Button
-                                    className="p-2"
+                                    variant="outline"
+                                    className={`p-2 ${!cardView ? "!text-white !bg-primary" : "text-black bg-white"}`}
+                                    onClick={() => setCardView(false)}
                                 >
                                     <TfiMenuAlt className="w-6 h-6" />
                                 </Button>
-                                <Button variant="outline" className="p-2">
-                                    <LuArrowLeftRight className="w-6 h-6" />
+                                <Button
+                                    variant="outline"
+                                    className={`p-2 ${cardView ? "!text-white !bg-primary" : "text-black bg-white"}`}
+                                    onClick={() => setCardView(true)}
+                                >
+                                    <LuArrowLeftRight className={`w-6 h-6`} />
                                 </Button>
                             </div>
                         </div>
 
                     </div>
-                    <div className='flex flex-col'>
-                        {jobs?.slice(0, 8)?.map((job, i) =>
+                    <div ref={cardContainerRef} className='flex flex-wrap justify-start items-start w-full'>
+                        {!cardView && jobs?.slice(0, 8)?.map((job, i) =>
                             < Card
                                 key={i}
-                                className="group flex justify-between items-center md:px-5 px-1 py-0 my-2 cursor-pointer transition duration-300 hover:border hover:border-blue-300"
+                                className="group w-full flex justify-between items-center md:px-5 px-1 py-0 my-2 cursor-pointer transition duration-300 hover:border hover:border-blue-300"
                                 onClick={() => router.push("/jobs/detail")}
                             >
                                 <div className="flex flex-row items-center md:gap-5 gap-2">
@@ -120,11 +149,60 @@ const Jobs = () => {
                                 </CardFooter>
                             </Card>
                         )}
+                        {cardView && jobs?.slice(0, 12)?.map((job, index) =>
+                            <div key={index} className="job-card xl:w-1/3 lg:w-1/2 w-full p-2 py-0 my-2">
+                                < Card
+                                    className="group h-full flex flex-col justify-between items-center md:px-5 px-3 py-1 my-2 cursor-pointer shadow-sm transition duration-300 hover:border hover:border-blue-300"
+                                    onClick={() => router.push("/jobs/detail")}
+                                >
+                                    <div className="mt-3 w-full h-full flex flex-row justify-between items-center md:gap-5 gap-2">
+                                        <div className="relative w-auto min-w-[50px]">
+                                            <Image
+                                                className="w-auto h-full"
+                                                src={job?.logo}
+                                                alt="Logo"
+                                                width={50}
+                                                height={50}
+                                                priority
+                                            />
+                                        </div>
+                                        <div className="bg-[#E9E19D] px-4 py-1 text-xs rounded-md">
+                                            {job?.remote}
+                                        </div>
+                                    </div>
+                                    <div className="p-0 py-6">
+                                        <CardDescription className="text-sm font-normal text-[#215085]">{job?.company}</CardDescription>
+                                        <CardTitle className="text-lg font-medium">
+                                            {job?.title}
+                                        </CardTitle>
+                                    </div>
+                                    <div className="w-full flex items-center py-4 px-0 border-t">
+                                        <div className="w-full flex flex-row justify-between items-center">
+                                            <div className="flex flex-col justify-start items-start text-sm">
+                                                <div className="font-bold flex flex-row justify-start items-center">
+                                                    <IoLocationSharp className="w-5 h-5" />
+                                                    <div>{job?.location}</div>
+                                                </div>
+                                                <div className="my-1 pl-1 font-medium text-gray-500">Vor zwei Tagen veroffentlicht</div>
+                                            </div>
+                                            <Button
+                                                size="icon"
+                                                variant="ghost"
+                                                className="!bg-white !border-none"
+                                                onClick={() => { router.push("/jobdetail") }}
+                                            >
+                                                <FaArrowRightLong className="h-5 w-5 bg-white transition duration-300 group-hover:scale-x-140 group-hover:text-blue-500 group-hover:translate-x-2" />
+                                            </Button>
+                                        </div>
+                                    </div>
+                                </Card>
+                            </div>
+                        )}
                         <QuickRegister />
-                        {jobs?.slice(9, 20)?.map((job, i) =>
+                        {!cardView && jobs?.slice(9, 20)?.map((job, i) =>
                             < Card
                                 key={i}
-                                className="group flex justify-between items-center md:px-5 px-1 py-0 my-2 cursor-pointer transition duration-300 hover:border hover:border-blue-300"
+                                className="group w-full flex justify-between items-center md:px-5 px-1 py-0 my-2 cursor-pointer transition duration-300 hover:border hover:border-blue-300"
                                 onClick={() => router.push("/jobs/detail")}
                             >
                                 <div className="flex flex-row items-center gap-5">
@@ -157,6 +235,55 @@ const Jobs = () => {
                                     </Button>
                                 </CardFooter>
                             </Card>
+                        )}
+                        {cardView && jobs?.slice(13, 25)?.map((job, index) =>
+                            <div key={index} className="job-card xl:w-1/3 lg:w-1/2 w-full p-2 py-0 my-2">
+                                < Card
+                                    className="group h-full flex flex-col justify-between items-center md:px-5 px-3 py-1 my-2 cursor-pointer shadow-sm transition duration-300 hover:border hover:border-blue-300"
+                                    onClick={() => router.push("/jobs/detail")}
+                                >
+                                    <div className="mt-3 w-full flex flex-row justify-between items-center md:gap-5 gap-2">
+                                        <div className="relative w-auto min-w-[50px]">
+                                            <Image
+                                                className="w-auto h-full"
+                                                src={job?.logo}
+                                                alt="Logo"
+                                                width={50}
+                                                height={50}
+                                                priority
+                                            />
+                                        </div>
+                                        <div className="bg-[#E9E19D] px-4 py-1 text-xs rounded-md">
+                                            {job?.remote}
+                                        </div>
+                                    </div>
+                                    <div className="p-0 py-6">
+                                        <CardDescription className="text-sm font-normal text-[#215085]">{job?.company}</CardDescription>
+                                        <CardTitle className="text-lg font-medium">
+                                            {job?.title}
+                                        </CardTitle>
+                                    </div>
+                                    <div className="w-full flex items-center py-4 px-0 border-t">
+                                        <div className="w-full flex flex-row justify-between items-center">
+                                            <div className="flex flex-col justify-start items-start text-sm">
+                                                <div className="font-bold flex flex-row justify-start items-center">
+                                                    <IoLocationSharp className="w-5 h-5" />
+                                                    <div>{job?.location}</div>
+                                                </div>
+                                                <div className="my-1 pl-1 font-medium text-gray-500">Vor zwei Tagen veroffentlicht</div>
+                                            </div>
+                                            <Button
+                                                size="icon"
+                                                variant="ghost"
+                                                className="!bg-white !border-none"
+                                                onClick={() => { router.push("/jobdetail") }}
+                                            >
+                                                <FaArrowRightLong className="h-5 w-5 bg-white transition duration-300 group-hover:scale-x-140 group-hover:text-blue-500 group-hover:translate-x-2" />
+                                            </Button>
+                                        </div>
+                                    </div>
+                                </Card>
+                            </div>
                         )}
                         <div className='flex justify-center items-center py-5'>
                             <Button className="rounded-sm font-bold bg-black text-sm">

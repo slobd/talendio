@@ -116,14 +116,18 @@ export default function Home() {
           <div className="w-full">
             <div className="md:text-4xl text-3xl font-bold">Neue Jobangebote</div>
           </div>
-          <div className="w-full flex justify-end gap-3 md:pt-5 pt-2">
-            <Button variant="outline" className="p-2 bg-white">
+          <div className="w-full flex md:justify-end justify-start gap-3 md:pt-5 pt-2">
+            <Button
+              variant="outline"
+              className={`p-2 ${!cardView ? "!text-white !bg-primary" : "text-black bg-white"}`}
+              onClick={() => setCardView(false)}
+            >
               <TfiMenuAlt className="w-6 h-6" />
             </Button>
             <Button
               variant="outline"
               className={`p-2 ${cardView ? "!text-white !bg-primary" : "text-black bg-white"}`}
-              onClick={() => setCardView(prev => !prev)}
+              onClick={() => setCardView(true)}
             >
               <LuArrowLeftRight className={`w-6 h-6`} />
             </Button>
@@ -147,7 +151,7 @@ export default function Home() {
           <TabsContent value={activeJobTab}>
             <div ref={cardContainerRef} className="flex flex-wrap justify-start items-start">
               {!cardView && jobs?.slice(0, 8)?.map((job, index) =>
-                <div key={index} className="xl:w-1/2 w-full p-0">
+                <div key={index} className="xl:w-1/2 w-full p-0 px-2">
                   < Card
                     className="group flex justify-between items-center md:px-5 px-1 py-1 my-2 cursor-pointer transition duration-300 hover:border hover:border-blue-300"
                     onClick={() => router.push("/jobs/detail")}
@@ -235,7 +239,7 @@ export default function Home() {
             </div>
           </TabsContent>
 
-          <div className="w-full flex justify-end gap-3 md:pt-5 pt-2">
+          <div className="w-full flex justify-start gap-3 md:pt-5 pt-2">
             <Button variant="outline" className="md:w-auto w-full border-2 border-black rounded-sm font-bold">
               Alle Jobs anzeigen
               <MdKeyboardArrowRight className="w-7 h-7 pl-1 md:block hidden" />
@@ -312,7 +316,7 @@ export default function Home() {
               <CarouselPrevious className="-left-5 w-10 h-10 border border-gray-300" />
               <CarouselNext className="-right-5 w-10 h-10 border border-gray-300" />
             </Carousel>
-            <div className="w-full flex justify-end gap-3 md:pt-5 pt-2">
+            <div className="w-full flex justify-start gap-3 md:pt-5 pt-2">
               <Button variant="outline" className="md:w-auto w-full border-2 border-black rounded-sm font-bold">
                 Alle Arbeitgeber
                 <MdKeyboardArrowRight className="w-7 h-7 pl-1 md:block hidden" />
@@ -331,7 +335,7 @@ export default function Home() {
         <Tabs
           value={activeMagazineTab}
         >
-          <TabsList className="flex justify-start flex-row overflow-x-auto p-0">
+          <TabsList className="flex justify-start flex-row overflow-x-auto p-0 px-2">
             {magazineTabs?.map((tab: OptionType, index) =>
               <TabsTrigger
                 key={index}
@@ -370,7 +374,7 @@ export default function Home() {
               ))}
             </div>
           </TabsContent>
-          <div className="w-full flex justify-end gap-3 md:pt-5 pt-2">
+          <div className="w-full flex justify-start gap-3 md:pt-5 pt-2">
             <Button variant="outline" className="md:w-auto w-full border-2 border-black rounded-sm font-bold">
               Alle Artikel ansehen
               <MdKeyboardArrowRight className="w-7 h-7 pl-1 md:block hidden" />
@@ -422,7 +426,7 @@ export default function Home() {
                 </div>
               ))}
             </div>
-            <div className="w-full flex justify-end gap-3 md:pt-5 pt-2">
+            <div className="w-full flex justify-start gap-3 md:pt-5 pt-2">
               <Button variant="outline" className="md:w-auto w-full border-2 border-black rounded-sm font-bold">
                 Alle Artikel
                 <MdKeyboardArrowRight className="w-7 h-7 pl-1 md:block hidden" />
