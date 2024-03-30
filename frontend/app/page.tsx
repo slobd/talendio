@@ -35,6 +35,7 @@ import { IoLocationSharp } from "react-icons/io5";
 import { jobs, employers, magazines, topics, tools, partners } from "@/lib/mocks";
 import NewsletterPanel from "@/components/newsletter";
 import { lightColors } from "@/lib/constants";
+import { useClientMediaQuery } from '@/components/hooks/useClientMediaQuery';
 
 const matchJobTabs: OptionType[] = [
   { label: "Alle", value: "alle" },
@@ -73,6 +74,7 @@ const topicTabs: OptionType[] = [
 
 export default function Home() {
   const router = useRouter();
+  const isMobile = useClientMediaQuery('(max-width: 768px)');
   const [searchKey, setSearchKey] = useState("");
   const [cardView, setCardView] = useState(false);
   const [activeJobTab, setActiveJobTab] = useState("alle");
@@ -87,19 +89,22 @@ export default function Home() {
   };
 
   useEffect(() => {
-    const cards = cardContainerRef.current?.querySelectorAll('.job-card');
-    if (cards) {
-      let maxHeight = 0;
+    if (!isMobile) {
+      const cards = cardContainerRef.current?.querySelectorAll('.job-card');
+      if (cards) {
+        let maxHeight = 0;
 
-      cards.forEach((card: any) => {
-        maxHeight = Math.max(maxHeight, card.clientHeight);
-      });
+        cards.forEach((card: any) => {
+          maxHeight = Math.max(maxHeight, card.clientHeight);
+        });
 
-      cards.forEach((card: any) => {
-        card.setAttribute('style', `height: ${maxHeight}px`);
-      });
+        cards.forEach((card: any) => {
+          card.setAttribute('style', `height: ${maxHeight}px`);
+        });
+      }
     }
-  }, [cardView]);
+
+  }, [cardView, isMobile]);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-start py-20">
@@ -112,7 +117,7 @@ export default function Home() {
             <div className="md:text-4xl text-3xl font-bold">Neue Jobangebote</div>
           </div>
           <div className="w-full flex justify-end gap-3 md:pt-5 pt-2">
-            <Button className="p-2">
+            <Button variant="outline" className="p-2 bg-white">
               <TfiMenuAlt className="w-6 h-6" />
             </Button>
             <Button
@@ -122,16 +127,12 @@ export default function Home() {
             >
               <LuArrowLeftRight className={`w-6 h-6`} />
             </Button>
-            <Button variant="outline" className="border-2 border-black rounded-sm font-bold">
-              Alle Jobs anzeigen
-              <MdKeyboardArrowRight className="w-7 h-7 pl-1" />
-            </Button>
           </div>
         </div>
         <Tabs
           value={activeJobTab}
         >
-          <TabsList className="flex justify-start flex-wrap overflow-auto">
+          <TabsList className="flex justify-start flex-row overflow-x-auto">
             {matchJobTabs?.map((tab: OptionType, index) =>
               <TabsTrigger
                 key={index}
@@ -146,7 +147,7 @@ export default function Home() {
           <TabsContent value={activeJobTab}>
             <div ref={cardContainerRef} className="flex flex-wrap justify-start items-start">
               {!cardView && jobs?.slice(0, 8)?.map((job, index) =>
-                <div key={index} className="xl:w-1/2 w-full p-2 py-0">
+                <div key={index} className="xl:w-1/2 w-full p-0">
                   < Card
                     className="group flex justify-between items-center md:px-5 px-1 py-1 my-2 cursor-pointer transition duration-300 hover:border hover:border-blue-300"
                     onClick={() => router.push("/jobs/detail")}
@@ -173,6 +174,7 @@ export default function Home() {
                       <Button
                         size="icon"
                         variant="ghost"
+                        className="!bg-white !border-none"
                         onClick={() => { router.push("/jobdetail") }}
                       >
                         <FaArrowRightLong className="h-5 w-5 bg-white transition duration-300 group-hover:scale-x-140 group-hover:text-blue-500 group-hover:translate-x-2" />
@@ -184,7 +186,7 @@ export default function Home() {
               {cardView && jobs?.slice(0, 8)?.map((job, index) =>
                 <div key={index} className="job-card xl:w-1/4 lg:w-1/3 md:w-1/2 w-full p-2 py-0 my-2">
                   < Card
-                    className="group h-full flex flex-col justify-between items-center md:px-5 px-1 py-1 my-2 cursor-pointer shadow-sm transition duration-300 hover:border hover:border-blue-300"
+                    className="group h-full flex flex-col justify-between items-center md:px-5 px-3 py-1 my-2 cursor-pointer shadow-sm transition duration-300 hover:border hover:border-blue-300"
                     onClick={() => router.push("/jobs/detail")}
                   >
                     <div className="mt-3 w-full flex flex-row justify-between items-center md:gap-5 gap-2">
@@ -220,6 +222,7 @@ export default function Home() {
                         <Button
                           size="icon"
                           variant="ghost"
+                          className="!bg-white !border-none"
                           onClick={() => { router.push("/jobdetail") }}
                         >
                           <FaArrowRightLong className="h-5 w-5 bg-white transition duration-300 group-hover:scale-x-140 group-hover:text-blue-500 group-hover:translate-x-2" />
@@ -231,6 +234,13 @@ export default function Home() {
               )}
             </div>
           </TabsContent>
+
+          <div className="w-full flex justify-end gap-3 md:pt-5 pt-2">
+            <Button variant="outline" className="md:w-auto w-full border-2 border-black rounded-sm font-bold">
+              Alle Jobs anzeigen
+              <MdKeyboardArrowRight className="w-7 h-7 pl-1 md:block hidden" />
+            </Button>
+          </div>
         </Tabs>
       </div>
       {/* Newsletter  */}
@@ -242,17 +252,12 @@ export default function Home() {
             <div className="md:text-4xl text-3xl font-bold">Arbeitgeber in Stadtname</div>
             <div className="text-md text-gray-500 py-2 pt-4">Entdecke interessante Unternehmen in Deiner Stadt</div>
           </div>
-          <div className="w-full flex justify-end gap-3 md:pt-5 pt-2">
-            <Button variant="outline" className="border-2 border-black rounded-sm font-bold">
-              Alle Arbeitgeber
-              <MdKeyboardArrowRight className="w-7 h-7 pl-1" />
-            </Button>
-          </div>
         </div>
         <Tabs
           value={activeEmployerTab}
+          className="p-0 m-0"
         >
-          <TabsList className="flex justify-start flex-wrap overflow-auto">
+          <TabsList className="flex justify-start flex-row overflow-x-auto p-0">
             {employerTabs?.map((tab: OptionType, index) =>
               <TabsTrigger
                 key={index}
@@ -267,16 +272,16 @@ export default function Home() {
           <TabsContent value={activeEmployerTab}>
             <Carousel
               opts={{ align: "start" }}
-              className="w-full"
+              className="w-full p-0"
             >
               <CarouselContent>
                 {employers.map((item, index) => (
-                  <CarouselItem key={index} className="xl:basis-1/4 lg:basis-1/3 sm:basis-1/2">
+                  <CarouselItem key={index} className="xl:basis-1/5 lg:basis-1/4 md:basis-1/3 sm:basis-1/2">
                     < div key={index} className="relative flex flex-col justify-between items-center text-center px-5 py-1 my-2 gap-3 cursor-pointer shadow-sm transition duration-300 border rounded-md hover:border hover:border-gray-400">
-                      <div className={`absolute top-0 w-full h-20 opacity-50 overflow-hidden ${lightColors[index % lightColors.length]}`}></div>
+                      <div className={`absolute top-0 w-full h-24 opacity-50 overflow-hidden ${lightColors[index % lightColors.length]}`}></div>
                       <div className="z-10 bg-white p-2.5 border rounded-[7px] border-gray-300 mt-10">
                         <Image
-                          className="w-12 h-12"
+                          className="w-20 h-20"
                           src={item?.logo}
                           alt="logo"
                           width={40}
@@ -285,7 +290,7 @@ export default function Home() {
                         />
                       </div>
                       <div className="px-0">
-                        <CardTitle className="text-lg">{item?.name}</CardTitle>
+                        <CardTitle className="text-lg text-nowrap whitespace-nowrap">{item?.name}</CardTitle>
                         <div className="flex flex-col text-black items-center text-sm">
                           <span>{item?.count} Offene Stellen</span>
                         </div>
@@ -307,6 +312,12 @@ export default function Home() {
               <CarouselPrevious className="-left-5 w-10 h-10 border border-gray-300" />
               <CarouselNext className="-right-5 w-10 h-10 border border-gray-300" />
             </Carousel>
+            <div className="w-full flex justify-end gap-3 md:pt-5 pt-2">
+              <Button variant="outline" className="md:w-auto w-full border-2 border-black rounded-sm font-bold">
+                Alle Arbeitgeber
+                <MdKeyboardArrowRight className="w-7 h-7 pl-1 md:block hidden" />
+              </Button>
+            </div>
           </TabsContent>
         </Tabs>
       </div>
@@ -316,17 +327,11 @@ export default function Home() {
           <div className="w-full">
             <div className="md:text-4xl text-3xl font-bold">Magazin</div>
           </div>
-          <div className="w-full flex justify-end gap-3 md:pt-5 pt-2">
-            <Button variant="outline" className="border-2 border-black rounded-sm font-bold">
-              Alle Artikel ansehen
-              <MdKeyboardArrowRight className="w-7 h-7 pl-1" />
-            </Button>
-          </div>
         </div>
         <Tabs
           value={activeMagazineTab}
         >
-          <TabsList className="flex justify-start flex-wrap overflow-auto">
+          <TabsList className="flex justify-start flex-row overflow-x-auto p-0">
             {magazineTabs?.map((tab: OptionType, index) =>
               <TabsTrigger
                 key={index}
@@ -341,7 +346,7 @@ export default function Home() {
           <TabsContent value={activeMagazineTab}>
             <div className="flex flex-wrap justify-start items-start">
               {magazines?.map((item, index) => (
-                <div key={index} className="flex gap-3 xl:w-1/3 md:w-1/2 p-3">
+                <div key={index} className="flex gap-3 xl:w-1/3 md:w-1/2 p-3 px-0">
                   <Card className="border-none shadow-none w-full flex flex-col justify-start items-start my-2 gap-3 cursor-pointer transition duration-300">
                     <span className="w-full h-full overflow-hidden rounded-md">
                       <Image
@@ -365,6 +370,12 @@ export default function Home() {
               ))}
             </div>
           </TabsContent>
+          <div className="w-full flex justify-end gap-3 md:pt-5 pt-2">
+            <Button variant="outline" className="md:w-auto w-full border-2 border-black rounded-sm font-bold">
+              Alle Artikel ansehen
+              <MdKeyboardArrowRight className="w-7 h-7 pl-1 md:block hidden" />
+            </Button>
+          </div>
         </Tabs>
       </div>
       {/* Hot Topics */}
@@ -373,17 +384,11 @@ export default function Home() {
           <div className="w-full">
             <div className="md:text-4xl text-3xl font-bold">Veranstaltungen</div>
           </div>
-          <div className="w-full flex justify-end gap-3 md:pt-5 pt-2">
-            <Button variant="outline" className="border-2 border-black rounded-sm font-bold">
-              Alle Artikel
-              <MdKeyboardArrowRight className="w-7 h-7 pl-1" />
-            </Button>
-          </div>
         </div>
         <Tabs
           value={activeTopicTab}
         >
-          <TabsList className="flex justify-start flex-wrap overflow-auto">
+          <TabsList className="flex justify-start flex-row overflow-x-auto p-0">
             {topicTabs?.map((tab: OptionType, index) =>
               <TabsTrigger
                 key={index}
@@ -416,6 +421,12 @@ export default function Home() {
                   </Card>
                 </div>
               ))}
+            </div>
+            <div className="w-full flex justify-end gap-3 md:pt-5 pt-2">
+              <Button variant="outline" className="md:w-auto w-full border-2 border-black rounded-sm font-bold">
+                Alle Artikel
+                <MdKeyboardArrowRight className="w-7 h-7 pl-1 md:block hidden" />
+              </Button>
             </div>
           </TabsContent>
         </Tabs>

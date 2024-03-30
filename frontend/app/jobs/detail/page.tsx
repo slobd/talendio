@@ -22,9 +22,9 @@ const Jobs = () => {
         <div className="pt-20 pb-10">
             <div className="md:px-16 px-4 pt-8 pb-2 flex flex-row justify-between items-center gap-10">
                 <div className="flex md:flex-row flex-col gap-6 justify-between items-center pb-10 border-b">
-                    <div className="relative w-auto min-w-[100px] p-5 border border-gray-400 rounded-md">
+                    <div className="flex justify-center items-center w-auto min-w-[100px] min-h-[100px] border border-gray-400 rounded-md">
                         <Image
-                            className="w-auto h-full"
+                            className="w-auto h-auto"
                             src={"/images/jobs/job_logo_4.png"}
                             alt="Logo"
                             width={50}
@@ -36,30 +36,30 @@ const Jobs = () => {
                         <div className="font-semibold text-xs text-gray-600">EPPLE GmbH</div>
                         <div className="text-[28px] font-bold mt-1 mb-3">Content Marketing Manager (m/w/d) Schwerpunkt Social Media</div>
                         <div className="flex flex-wrap justify-start items-center gap-x-3 gap-y-1 text-xs font-light">
-                            <div className="flex flex-row justify-start items-center gap-1 px-2 py-0 border border-gray-400 rounded-full">
-                                <MdApartment className="w-5 h-5 font-light" />
-                                SVT PRODUCTS GMBH
+                            <div className="flex flex-row justify-start items-center gap-1 px-3 py-1 border border-gray-400 rounded-full">
+                                <MdApartment className="w-4 h-4 font-light" />
+                                SVT Products GMBH
                             </div>
                             {Array.from({ length: 1 }).map((item, index) =>
                                 <div
                                     key={index}
-                                    className="flex flex-row justify-start items-center gap-1 px-2 py-0 border border-gray-400 rounded-full"
+                                    className="flex flex-row justify-start items-center gap-1 px-3 py-1 border border-gray-400 rounded-full"
                                 >
-                                    <LuGraduationCap className="w-5 h-5 font-light" />
-                                    PROFESSIONAL (2 - 5)
+                                    <LuGraduationCap className="w-4 h-4 font-light" />
+                                    Professional (2 - 5)
                                 </div>
                             )}
-                            <div className="flex flex-row justify-start items-center gap-1 px-2 py-0 border border-gray-400 rounded-full">
-                                <IoLocationOutline className="w-5 h-5 font-light" />
-                                HAMBURG (HYBRID)
+                            <div className="flex flex-row justify-start items-center gap-1 px-3 py-1 border border-gray-400 rounded-full">
+                                <IoLocationOutline className="w-4 h-4 font-light" />
+                                Hambrug (Hybrid)
                             </div>
-                            <div className="flex flex-row justify-start items-center gap-1 px-2 py-0 border border-gray-400 rounded-full">
-                                <MdOutlineCalendarMonth className="w-5 h-5 font-light" />
-                                FULL TIME
+                            <div className="flex flex-row justify-start items-center gap-1 px-3 py-1 border border-gray-400 rounded-full">
+                                <MdOutlineCalendarMonth className="w-4 h-4 font-light" />
+                                Full Time
                             </div>
-                            <div className="flex flex-row justify-start items-center gap-1 px-2 py-0 border border-gray-400 rounded-full">
-                                <LuAlarmClock className="w-5 h-5 font-light" />
-                                AS SOON AS POSSIBLE
+                            <div className="flex flex-row justify-start items-center gap-1 px-3 py-1 border border-gray-400 rounded-full">
+                                <LuAlarmClock className="w-4 h-4 font-light" />
+                                As Soon As Possible
                             </div>
                         </div>
                     </div>
@@ -73,7 +73,7 @@ const Jobs = () => {
                     </div>
                 </div>
             </div>
-            <div className="md:px-16 px-2 pt-8 pb-2 flex lg:flex-row flex-col justify-between gap-10">
+            <div className="md:px-16 px-4 pt-8 pb-2 flex lg:flex-row flex-col justify-between gap-10">
                 <div className="flex flex-col gap-6 justify-between items-center ">
                     {/* demo html */}
                     <div className="font-light">

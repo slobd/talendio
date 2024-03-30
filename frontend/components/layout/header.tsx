@@ -42,14 +42,14 @@ const Header = () => {
 
     return (
         <div className="rounded-md md:px-16 px-2 z-50 flex justify-between items-center w-full h-20 text-black bg-[#E5F0FB] fixed nav">
-            <div className="w-auto min-w-[50px] !w-[180px] min-w-[180px] !min-h-[30px]">
-                <Link href="/" className='w-auto min-w-[50px]'>
+            <div className="w-auto !w-[180px] !h-[48px] !min-w-[180px] !min-h-[48px]">
+                <Link href="/" className='w-auto !min-w-[180px]'>
                     <Image
                         className="w-auto h-full"
                         src="/headerlogo.png"
                         alt="Logo"
-                        width={180}
-                        height={50}
+                        width={1013}
+                        height={274}
                         priority
                     />
                 </Link>
