@@ -29,10 +29,10 @@ const SearchPanel: NextPage<SearchPanelProps> = ({ onSubmit }) => {
                 </div>
 
                 <div className="flex lg:w-1/2 w-full items-center space-x-2 py-3">
-                    <div className="relative w-full">
+                    <div className="relative w-full !rounded-md">
                         <Input
                             type="search"
-                            className="rounded-sm pl-9 !ring-0 !ring-offset-0 h-[50px] text-[1.175rem] font-light"
+                            className="!rounded-md pl-9 !ring-0 !ring-offset-0 h-[50px] text-[1.175rem] font-light"
                             placeholder="Job oder Arbeitgeber suchen ..."
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
