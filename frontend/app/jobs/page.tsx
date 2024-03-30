@@ -22,8 +22,8 @@ import { jobs } from "@/lib/mocks";
 import FilterUnit from '@/components/filterUnit';
 import QuickRegister from '@/components/quickRegister';
 import { jobCategories, locations, experiences, remotes } from '@/lib/mocks';
-import { useClientMediaQuery } from '@/components/hooks/useClientMediaQuery';
 import QuickJobAdPanel from '@/components/quickJobAdPanel';
+import { useClientMediaQuery } from '@/components/hooks/useClientMediaQuery';
 
 const Jobs = () => {
     const router = useRouter();
@@ -112,6 +112,7 @@ const Jobs = () => {
                                     <Button
                                         size="icon"
                                         variant="ghost"
+                                        className="bg-white !border-none"
                                         onClick={() => { router.push("/jobdetail") }}
                                     >
                                         <FaArrowRightLong className="h-5 w-5 bg-white transition duration-300 group-hover:scale-x-140 group-hover:text-blue-500 group-hover:translate-x-2" />
@@ -149,6 +150,7 @@ const Jobs = () => {
                                     <Button
                                         size="icon"
                                         variant="ghost"
+                                        className="bg-white !border-none"
                                         onClick={() => { router.push("/jobdetail") }}
                                     >
                                         <FaArrowRightLong className="h-5 w-5 bg-white transition duration-300 group-hover:scale-x-140 group-hover:text-blue-500 group-hover:translate-x-2" />
