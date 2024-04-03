@@ -29,7 +29,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <div className="no-horizontal-scrollbar">
+          <div className="no-horizontal-scrollbar md:px-16 px-4">
             {children}
           </div>
           <Footer />

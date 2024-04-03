@@ -20,7 +20,7 @@ const Jobs = () => {
 
     return (
         <div className="pt-20 pb-10">
-            <div className="md:px-16 px-4 pt-8 pb-2 flex flex-row justify-between items-center gap-10">
+            <div className="pt-8 pb-2 flex flex-row justify-between items-center gap-10">
                 <div className="flex md:flex-row flex-col gap-6 justify-between items-center pb-10 border-b">
                     <div className="flex justify-center items-center w-auto min-w-[100px] min-h-[100px] border border-gray-400 rounded-md">
                         <Image
@@ -73,7 +73,7 @@ const Jobs = () => {
                     </div>
                 </div>
             </div>
-            <div className="md:px-16 px-4 pt-8 pb-2 flex lg:flex-row flex-col justify-between gap-10">
+            <div className="pt-8 pb-2 flex lg:flex-row flex-col justify-between gap-10">
                 <div className="flex flex-col gap-6 justify-between items-center ">
                     {/* demo html */}
                     <div className="font-light">

@@ -64,9 +64,9 @@ const Jobs = () => {
       }, [cardView, isMobile]);
 
     return (
-        <div className="py-20">
+        <div className="flex min-h-screen flex-col items-center py-20">
             <SearchPanel onSubmit={searchJobs} />
-            <div className="md:px-16 px-4 py-8 flex flex-row gap-10">
+            <div className="py-8 flex flex-row gap-10">
                 <div className={`w-[300px] min-w-[300px] transition-[margin-left] ease-in-out duration-500 fixed md:static top-[300px] bottom-0 left-0 z-10 ${showFilterPanel ? "ml-0" : "ml-[-300px] md:ml-0"}`}>
                     <Button
                         className="border p-0 w-10 h-10 flex md:hidden items-center justify-center bg-white text-black shadow absolute top-0 right-0 translate-x-full rounded-r-lg cursor-pointer"

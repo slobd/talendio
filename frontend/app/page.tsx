@@ -111,7 +111,7 @@ export default function Home() {
       {/* Search Panel */}
       <SearchPanel onSubmit={searchJobs} />
       {/* Matching Jobs */}
-      <div className="w-full md:px-16 px-4">
+      <div className="w-full">
         <div className="flex md:flex-row flex-col justify-between items-center pb-3 pt-9">
           <div className="w-full">
             <div className="md:text-4xl text-3xl font-bold">Neue Jobangebote</div>
@@ -250,7 +250,7 @@ export default function Home() {
       {/* Newsletter  */}
       <NewsletterPanel />
       {/* Empolyers */}
-      <div className="w-full md:px-16 px-4">
+      <div className="w-full">
         <div className="flex md:flex-row flex-col justify-between items-center pb-3 pt-9">
           <div className="w-full">
             <div className="md:text-4xl text-3xl font-bold">Arbeitgeber in Stadtname</div>
@@ -326,7 +326,7 @@ export default function Home() {
         </Tabs>
       </div>
       {/* Magazine */}
-      <div className="w-full md:px-16 px-4">
+      <div className="w-full">
         <div className="flex md:flex-row flex-col justify-between items-center pb-3 pt-9">
           <div className="w-full">
             <div className="md:text-4xl text-3xl font-bold">Magazin</div>
@@ -383,7 +383,7 @@ export default function Home() {
         </Tabs>
       </div>
       {/* Hot Topics */}
-      <div className="w-full md:px-16 px-4">
+      <div className="w-full">
         <div className="flex md:flex-row flex-col justify-between items-center pb-3 pt-9">
           <div className="w-full">
             <div className="md:text-4xl text-3xl font-bold">Veranstaltungen</div>
@@ -438,7 +438,7 @@ export default function Home() {
       {/* Newsletter  */}
       <NewsletterPanel />
       {/* Studies & Tools */}
-      <div className="w-full md:px-16 px-4">
+      <div className="w-full">
         <div className="flex md:flex-row flex-col justify-between items-center pb-3 pt-9">
           <div className="w-full">
             <div className="md:text-4xl text-3xl font-bold">Studies & Tools</div>
@@ -499,7 +499,7 @@ export default function Home() {
         </Tabs>
       </div>
       {/* Partner */}
-      <div className="w-full md:px-16 px-4">
+      <div className="w-full">
         <div className="flex md:flex-row flex-col justify-between items-center pb-3 pt-9">
           <div className="w-full">
             <div className="md:text-4xl text-3xl font-bold md:text-start text-center">Partner</div>
