@@ -96,7 +96,7 @@ const Header = () => {
                 {nav ? <FaTimes size={20} /> : <FaBars size={20} />}
             </div>
             {nav && (
-                <div className="absolute top-20 left-0 w-full bg-gradient-to-b from-[#E5F0FB] to-gray-500 text-black py-2">
+                <div className="absolute top-20 left-0 w-full h-screen bg-gradient-to-b from-[#E5F0FB] to-gray-500 text-black py-2">
                     <ul className="flex flex-col justify-center items-center ">
                         {navItems.map(({ id, label, link }) => (
                             <li
