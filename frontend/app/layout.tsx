@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/themeProvider";
-import Header from "@/components/layout/header";
-import Footer from "@/components/layout/footer";
+import Header from "@/app/header";
+import Footer from "@/app/footer";
 
 import "./globals.css";
 
@@ -29,7 +29,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          {children}
+          <div className="no-horizontal-scrollbar">
+            {children}
+          </div>
           <Footer />
         </ThemeProvider>
       </body>

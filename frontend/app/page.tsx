@@ -151,9 +151,9 @@ export default function Home() {
           <TabsContent value={activeJobTab}>
             <div ref={cardContainerRef} className="flex flex-wrap justify-start items-start">
               {!cardView && jobs?.slice(0, 8)?.map((job, index) =>
-                <div key={index} className="xl:w-1/2 w-full p-0 px-2">
+                <div key={index} className="xl:w-1/2 w-full p-0 md:px-1 px-0">
                   < Card
-                    className="group flex justify-between items-center md:px-5 px-1 py-1 my-2 cursor-pointer transition duration-300 hover:border hover:border-blue-300"
+                    className="group flex justify-between items-center md:px-5 px-1 py-1 my-1 cursor-pointer transition duration-300 hover:border hover:border-blue-300"
                     onClick={() => router.push("/jobs/detail")}
                   >
                     <div className="flex flex-row items-center md:gap-5 gap-2 w-auto">
@@ -280,7 +280,7 @@ export default function Home() {
             >
               <CarouselContent>
                 {employers.map((item, index) => (
-                  <CarouselItem key={index} className="xl:basis-1/5 lg:basis-1/4 md:basis-1/3 sm:basis-1/2">
+                  <CarouselItem key={index} className="xl:basis-1/5 lg:basis-1/4 md:basis-1/3 sm:basis-1/2 pl-2">
                     < div key={index} className="relative flex flex-col justify-between items-center text-center px-5 py-1 my-2 gap-3 cursor-pointer shadow-sm transition duration-300 border rounded-md hover:border hover:border-gray-400">
                       <div className={`absolute top-0 w-full h-24 opacity-50 overflow-hidden ${lightColors[index % lightColors.length]}`}></div>
                       <div className="z-10 bg-white p-2.5 border rounded-[7px] border-gray-300 mt-10">
@@ -335,7 +335,7 @@ export default function Home() {
         <Tabs
           value={activeMagazineTab}
         >
-          <TabsList className="flex justify-start flex-row overflow-x-auto p-0 px-2">
+          <TabsList className="flex justify-start flex-row overflow-x-auto gap-x-2">
             {magazineTabs?.map((tab: OptionType, index) =>
               <TabsTrigger
                 key={index}
@@ -350,7 +350,7 @@ export default function Home() {
           <TabsContent value={activeMagazineTab}>
             <div className="flex flex-wrap justify-start items-start">
               {magazines?.map((item, index) => (
-                <div key={index} className="flex gap-3 xl:w-1/3 md:w-1/2 p-3 px-0">
+                <div key={index} className="flex gap-3 xl:w-1/3 md:w-1/2 md:p-1 p-0">
                   <Card className="border-none shadow-none w-full flex flex-col justify-start items-start my-2 gap-3 cursor-pointer transition duration-300">
                     <span className="w-full h-full overflow-hidden rounded-md">
                       <Image
@@ -516,7 +516,7 @@ export default function Home() {
             >
               <CarouselContent>
                 {partners?.map((partner, index) => (
-                  <CarouselItem key={index} className="group xl:basis-1/4 lg:basis-1/3 md:basis-1/2">
+                  <CarouselItem key={index} className="group xl:basis-1/4 lg:basis-1/3 md:basis-1/2 pl-2">
                     <div className=" relative rounded-sm border-none flex flex-row justify-start items-start gap-3 cursor-pointer">
                       <span className="w-full overflow-hidden rounded-sm p-0 m-0 border transition duration-300 group-hover:border-black">
                         <Image

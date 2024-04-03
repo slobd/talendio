@@ -81,3 +81,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+.no-horizontal-scrollbar {
+  /* Keeps the horizontal scrollbar hidden */
+  overflow-x: hidden !important;
+}
