@@ -5,7 +5,7 @@ import { Button } from "./ui/button";
 const NewsletterPanel: NextPage = () => {
 
     return (
-        <div className="md:px-16 px-4 pb-8 pt-12 md:pb-12">
+        <div className="pb-8 pt-12 md:pb-12">
             <div className="relative w-full bg-[#3B289E] rounded-sm px-10 py-8 overflow-hidden">
                 <div className="relative z-10 flex md:flex-row flex-col gap-3 justify-between items-center">
                     <div className="md:w-3/5 sm:w-4/5 w-full">

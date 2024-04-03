@@ -11,7 +11,7 @@ const SearchPanel: NextPage<SearchPanelProps> = ({ onSubmit }) => {
     const [input, setInput] = useState("");
 
     return (
-        <div className="w-full px-1">
+        <div className="w-screen px-1">
             <div className={`rounded-md flex lg:flex-row flex-col lg:justify-between justify-center items-center min-h-[180px] lg:px-16 px-4 bg-[#3B289E]`}>
                 <div className="lg:text-4xl text-2xl lg:w-2/5 w-full text-white py-2 px-0 font-light">
                     <div className="whitespace-nowrap"> Finde die besten Jobs </div>
